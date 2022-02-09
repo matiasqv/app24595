@@ -1,11 +1,14 @@
-import "./NavBar.css"
+import './NavBar.css'
+import '../CartWidget/CartWidget.js'
+import CartWidget from '../CartWidget/CartWidget.js'
 
-const NavBar = () => {
+const NavBar = (props) => {
     return (
         <nav className="NavBar">
             <div className="NavBar-logo">
                 <img src={'./images/logo.svg'} className="App-logo" alt="logo" />
-                <h3>e-miTienda</h3>
+                {/* props.title viene desde App.js por el props */}
+                <h3 style={{ backgroundColor: props.color }}>{props.title}</h3>
             </div>
             <div className="Categories">
                 <button className="Button">Productos</button>
@@ -15,6 +18,7 @@ const NavBar = () => {
             <div className="LoggaIn">
                 <button className="LoggaInButton">Logga In</button>
             </div>
+            <CartWidget />
         </nav>
     )
 }

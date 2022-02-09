@@ -1,0 +1,15 @@
+
+
+.CartWidget {
+    display: flex;
+    justify-content: right;
+}
+
+.Numero {
+    font-size: 300%;
+}
+
+.Carrito {
+    width: 4em;
+}
+
