@@ -5,7 +5,7 @@ const ItemListContainer = (props) => {
 
     const mostrar = (count) => {
         if (count > 0) {
-            console.log(count)
+            console.log("Se agreo al carrito",count, "unidades")
         }
     }
     return (
