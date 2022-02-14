@@ -1,9 +1,7 @@
 import { useState } from "react"
 import './ItemCount.css'
 
-const ItemCount = (props) => {
-    var initial = parseInt(props.initial);
-    var stock = parseInt(props.stock);
+const ItemCount = ({ stock, initial, mostrar }) => {
 
     const [count, setCount] = useState(initial) // = [state, setState]
 
@@ -17,11 +15,6 @@ const ItemCount = (props) => {
             setCount(count + 1)
         }
     }
-    const mostrar = () => {
-        if (count > 0){
-            console.log(count) 
-        }
-    }
 
     return (
         <>
@@ -31,7 +24,7 @@ const ItemCount = (props) => {
                 <button className="Button" onClick={decrement}>-</button>
                 <button className="Button" onClick={increment}>+</button>
             </div>
-            <button className="Button" onClick={mostrar}>AGREGAR AL CARRITO</button>
+            <button className="Button" onClick={() => mostrar(count)}>AGREGAR AL CARRITO</button>
         </>
     )
 }
