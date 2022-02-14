@@ -3,28 +3,25 @@ import './ItemCount.css'
 
 const ItemCount = (props) => {
     var initial = parseInt(props.initial);
-    var stock = parseFloat(props.stock);
+    var stock = parseInt(props.stock);
 
     const [count, setCount] = useState(initial) // = [state, setState]
-    
-    console.log(count);
-
 
     const decrement = () => {
-        if(count > 0) {
-            setCount (count - 1)
+        if (count > 0) {
+            setCount(count - 1)
         }
     }
     const increment = () => {
-        if(count < stock){
-            setCount (count + 1)
+        if (count < stock) {
+            setCount(count + 1)
         }
     }
     const mostrar = () => {
         console.log(count)
     }
 
-    return(
+    return (
         <>
             <h3>Counter</h3>
             <h2>{count}</h2>

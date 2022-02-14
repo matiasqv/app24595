@@ -7,8 +7,8 @@ const ItemListContainer = (props) => {
             <h2>LA TIENDA ONLINE</h2>
             <h3>Lo que buscas y mas...</h3>
             <h4 style={{ color: props.color }}>{props.greeting}</h4>
-            <br/>
-            <ItemCount stock ="20" initial="1" />
+            <br />
+            <ItemCount stock="20" initial="1" />
         </header>
     );
 }

@@ -1,11 +1,13 @@
 import './CartWidget.css'
 
+const cantidad = 5
+
 const CartWidget = () => {
 
     return (
         <div className="CartWidget">
             <img src={'./images/carrito.png'} className="Carrito" />
-            <p className="Numero">4</p>
+            <p className="Numero">{cantidad}</p>
         </div>
     )
 }
