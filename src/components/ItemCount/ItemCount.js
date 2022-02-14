@@ -1,33 +1,40 @@
-import { Component } from 'react'
+import { useState } from "react"
 import './ItemCount.css'
 
-class ClassCounter extends Component {
-    constructor(props) {
-        super(props)
-        this.state = { count: 5 }
+const ItemCount = (props) => {
+    var initial = parseInt(props.initial);
+    var stock = parseFloat(props.stock);
+
+    const [count, setCount] = useState(initial) // = [state, setState]
+    
+    console.log(count);
+
+
+    const decrement = () => {
+        if(count > 0) {
+            setCount (count - 1)
+        }
+    }
+    const increment = () => {
+        if(count < stock){
+            setCount (count + 1)
+        }
+    }
+    const mostrar = () => {
+        console.log(count)
     }
 
-    decrement = () =>{
-        this.setState({
-            count: this.state.count - 1
-        })
-    }
-    increment = () =>{
-        this.setState({
-            count: this.state.count + 1
-        })
-    }
-
-    render() {
-        return (
-            <>
-                <h3>ClassCounter</h3>
-                <h3>{this.state.count}</h3>
-                <button className="Button" onClick={this.decrement}>-</button>
-                <button className="Button" onClick={this.increment}>+</button>
-            </>
-        )
-    }
+    return(
+        <>
+            <h3>Counter</h3>
+            <h2>{count}</h2>
+            <div className="Button-Padre">
+                <button className="Button" onClick={decrement}>-</button>
+                <button className="Button" onClick={increment}>+</button>
+            </div>
+            <button className="Button" onClick={mostrar}>AGREGAR AL CARRITO</button>
+        </>
+    )
 }
 
-export default ClassCounter
+export default ItemCount

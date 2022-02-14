@@ -1,12 +1,21 @@
 
+.Button-Padre {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
 h3{
     font-size: 1em; 
 }
 .Button {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 2em;
     margin: 0 40px 20px;
     width: auto;
     padding: 12px;
-    font-size: 2em;
+    font-size: 1em;
     background: blue;
     border-radius: 8px;
     color: white;
