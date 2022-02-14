@@ -18,7 +18,9 @@ const ItemCount = (props) => {
         }
     }
     const mostrar = () => {
-        console.log(count)
+        if (count > 0){
+            console.log(count) 
+        }
     }
 
     return (
