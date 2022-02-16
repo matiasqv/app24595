@@ -21,11 +21,14 @@ const ItemList = (/* {product} */) => {
 
     return (
         <div className='list'>
-           <ul className="ListGroup">
-            {products.map(product => <Item key={product.id} product={product}/>)}
-        </ul> 
+            <ul className="ListGroup">
+                {products.map(product => {
+                    return (
+                        <Item key={product.id} product={product} />
+                    )
+                })}
+            </ul>
         </div>
-        
     )
 }
 
