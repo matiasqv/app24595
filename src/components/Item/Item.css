@@ -1,16 +1,20 @@
-.CardItem {
+.Item-Card {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
     width: 150px;
     padding: 30px;
-    margin: 30px;
+    margin: 20px;
     font-size: 10px;
-    background-color: rgb(110, 73, 13);
+    background-color: rgb(44, 136, 52);
     border: 1px solid #0a0202;
     border-radius: 10px;
 }
 
-.ItemHeader {
+.Item-Name {
     display: flex;
     justify-content: center;
+    font-size: 25px;
 }
 
 .Item-Precio {
@@ -24,4 +28,5 @@
     height: 100px;
     object-fit: cover;
     object-position: center;
+    border-radius: 10px;
 }

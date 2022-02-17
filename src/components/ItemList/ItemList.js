@@ -15,8 +15,8 @@ const ItemList = () => {
     }, [])
 
     return (
-        <div className='list'>
-            <ul className="ListGroup">
+        <div className='Item-list'>
+            <ul className="List">
                 {products.map(product =>
                     <Item key={product.id} productList={product} />
                 )}
