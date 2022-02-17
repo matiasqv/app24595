@@ -4,29 +4,22 @@ import Item from '../Item/Item';
 import './ItemList.css'
 
 
-const ItemList = (/* {product} */) => {
+const ItemList = () => {
 
     const [products, setProducts] = useState([])
 
     useEffect(() => {
         getProducts().then((products) => {
-            console.log(products)
             setProducts(products)
         })
     }, [])
 
-
-    console.log(products)
-
-
     return (
         <div className='list'>
             <ul className="ListGroup">
-                {products.map(product => {
-                    return (
-                        <Item key={product.id} product={product} />
-                    )
-                })}
+                {products.map(product =>
+                    <Item key={product.id} productList={product} />
+                )}
             </ul>
         </div>
     )

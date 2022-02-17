@@ -1,22 +1,18 @@
 import './Item.css'
 
 
-const Item = ({ product }) => {
-    console.log(product)
-    console.log(product.id)
+const Item = ({ productList }) => {
     return (
         <article className="CardItem">
             <h2 className="ItemHeader">
-                {product.marca}
+                {productList.marca}
             </h2>
-            <img src={product.imagen} alt={product.marca} className="Item-Img" />
+            <img src={productList.imagen} alt={productList.marca} className="Item-Img" />
             <p className="Item-Precio">
-                Precio: $ {product.precio}
+                Precio: $ {productList.precio}
             </p>
         </article>
     )
 }
-
-
 
 export default Item
