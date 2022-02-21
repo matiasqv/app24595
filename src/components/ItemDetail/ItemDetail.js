@@ -2,17 +2,17 @@ import './ItemDetail.css'
 
 const ItemDetail = ({ product }) => {
 
-let mail = product.permalink
-console.log(product.permalink)
+console.log(product)
+console.log(product)
 
     return (
         <article className="Item-Card">
             <h2 className="Item-Name">
-                {product.title}
+                {product.marca}
             </h2>
-            <img src={product.thumbnail} alt={product.title} className="Item-Img" />
+            <img src={product.imagen} alt={product.marca} className="Item-Img" />
             <p className="Item-Precio">
-                Precio: $ {product.price}
+                Precio: $ {product.precio}
             </p>
             <button className="Button" ><a href={product.permalink}></a></button>
         </article>

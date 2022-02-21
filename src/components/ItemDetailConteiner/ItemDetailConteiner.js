@@ -1,35 +1,27 @@
 import { useEffect, useState } from 'react';
+import { getProduct } from '../../asyncmock';
 import './ItemDetailConteiner.css';
 import ItemDetail from '../ItemDetail/ItemDetail';
 
-const ItemDetailConteiner = ({ product , ...rest }) => {
+const ItemDetailConteiner = () => {
 
-    const [products, setProducts] = useState([])
-    console.log(products)
+    const [product, setProduct] = useState([])
+    console.log(product)
     useEffect(() => {
-        fetch('https://api.mercadolibre.com/sites/MLA/search?q=Guitarras')
-        .then(response => {
-            console.log(response)
-            return response.json()
-        }).then(res =>{
-            console.log(res)
-            setProducts(res.results)
-            console.log(res.results)
-            console.log(products)
+        getProduct().then((product) => {
+            setProduct(product)
         })
-        console.log(products)
     }, [])
+
+    console.log(product)
 
     return (
         <div className='Item-list'>
-            <ul className="List">
-                {products.map(product =>
-                    <ItemDetail key={product.id} product={product} />,
-                    console.log(products)
-                )}
-            </ul>
+            <h3>Detalle de Producto</h3>
+            <ItemDetail key={product.id} product={product} />,
+
         </div>
-    )
+    );
 }
 
 

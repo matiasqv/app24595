@@ -1,15 +1,14 @@
 import './ItemListContainer.css';
-/* import ItemCount from '../ItemCount/ItemCount'; */
-/* import ItemList from '../ItemList/ItemList'; */
-import ItemDetailConteiner from '../ItemDetailConteiner/ItemDetailConteiner';
+import ItemCount from '../ItemCount/ItemCount';
+import ItemList from '../ItemList/ItemList';
 
 const ItemListContainer = ({ greeting = "Hola", color = "Red", ...rest }) => {
 
-/*     const mostrar = (count) => {
+    const mostrar = (count) => {
         if (count > 0) {
             console.log("Se agreo al carrito", count, "unidades")
         }
-    } */
+    }
 
     return (
         <header className="ItemListContainer">
@@ -17,9 +16,8 @@ const ItemListContainer = ({ greeting = "Hola", color = "Red", ...rest }) => {
             <h3>Lo que buscas y mas...</h3>
             <h4 style={{ color: color }}>{greeting}</h4>
             <br />
-            {/* <ItemCount stock={20} initial={1} mostrar={mostrar} /> */}
-            {/* <ItemList products={[]} /> */}
-            <ItemDetailConteiner products={[]}/>
+            <ItemCount stock={20} initial={1} mostrar={mostrar} />
+            <ItemList products={[]} />
         </header>
     );
 }
