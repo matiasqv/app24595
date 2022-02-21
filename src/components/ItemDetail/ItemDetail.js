@@ -1,20 +1,21 @@
 import './ItemDetail.css'
 
-const ItemDetail = ({ product }) => {
+const ItemDetail = ({ productDetail }) => {
 
-console.log(product)
-console.log(product)
+console.log(productDetail)
 
     return (
         <article className="Item-Card">
             <h2 className="Item-Name">
-                {product.marca}
+                {productDetail.marca}
             </h2>
-            <img src={product.imagen} alt={product.marca} className="Item-Img" />
+            <img src={productDetail.imagen} alt={productDetail.marca} className="Item-Img" />
             <p className="Item-Precio">
-                Precio: $ {product.precio}
+                Precio: $ {productDetail.precio}
             </p>
-            <button className="Button" ><a href={product.permalink}></a></button>
+            <p className="Item-Precio">
+                {productDetail.detalles}
+            </p>
         </article>
     )
 }

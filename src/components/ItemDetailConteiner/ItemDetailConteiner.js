@@ -1,25 +1,25 @@
 import { useEffect, useState } from 'react';
 import { getProduct } from '../../asyncmock';
-import './ItemDetailConteiner.css';
 import ItemDetail from '../ItemDetail/ItemDetail';
+import './ItemDetailConteiner.css';
 
 const ItemDetailConteiner = () => {
 
-    const [product, setProduct] = useState([])
-    console.log(product)
+    const [productDetail, setProductDetail] = useState([])
+    console.log(productDetail)
     useEffect(() => {
-        getProduct().then((product) => {
-            setProduct(product)
+        getProduct().then((productDetail) => {
+            setProductDetail(productDetail)
         })
     }, [])
 
-    console.log(product)
+    console.log(productDetail)
+    console.log(productDetail.id)
 
     return (
-        <div className='Item-list'>
+        <div className='ItemDetailContainer'>
             <h3>Detalle de Producto</h3>
-            <ItemDetail key={product.id} product={product} />,
-
+            <ItemDetail key={productDetail.id} productDetail={productDetail} />,
         </div>
     );
 }

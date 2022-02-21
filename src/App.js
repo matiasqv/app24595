@@ -12,7 +12,7 @@ function App() {
       {/* este title  y color viaja a NavBar por las props */}
       <NavBar title="e-miTienda" color="purple" />
       <ItemListContainer greeting="HOLA MUNDO" color="purple" />
-      <ItemDetailConteiner  product={[]}/>
+      <ItemDetailConteiner  producDetail={[]}/>
     </div>
   );
 }
