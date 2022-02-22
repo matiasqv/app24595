@@ -1,8 +1,7 @@
+
 import './ItemDetail.css'
 
 const ItemDetail = ({ productDetail }) => {
-
-console.log(productDetail)
 
     return (
         <article className="Item-Card">
@@ -13,10 +12,19 @@ console.log(productDetail)
             <p className="Item-Precio">
                 Precio: $ {productDetail.precio}
             </p>
-            <p className="Item-Precio">
-                {productDetail.detalles}
-            </p>
+            <div>
+                <p className="List">
+                    {productDetail.detalles}
+                </p>
+                <p className="List">
+                    {productDetail.producto}
+                </p>
+                <p className="List">
+                    Stock: {productDetail.stock}
+                </p>
+            </div>
         </article>
     )
 }
+
 export default ItemDetail

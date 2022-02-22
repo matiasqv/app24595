@@ -30,3 +30,14 @@
     object-position: center;
     border-radius: 10px;
 }
+
+.Item-list {
+    display: contents;
+    
+}
+
+.List {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}

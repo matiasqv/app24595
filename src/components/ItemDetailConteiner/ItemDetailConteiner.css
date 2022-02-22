@@ -1,14 +1,4 @@
-/* .Item-list {
-    display: contents;
-    
-} */
 
-/* .List {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
-}
- */
 .ItemDetailContainer {
     background-color: #282c34;
     min-height: 100vh;
