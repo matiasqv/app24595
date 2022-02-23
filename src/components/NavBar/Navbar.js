@@ -1,13 +1,13 @@
 import './NavBar.css'
 import CartWidget from '../CartWidget/CartWidget.js'
 
-const NavBar = (props) => {
+const NavBar = ({ routing, title, color, ...rest }) => {
     return (
         <nav className="NavBar">
-            <div className="NavBar-logo">
+            <div className="NavBar-logo" onClick={() => routing({ path: 'list', id: 1 })}>
                 <img src={'./images/logo.svg'} className="App-logo" alt="logo" />
                 {/* props.title viene desde App.js por el props */}
-                <h3 style={{ backgroundColor: props.color }}>{props.title}</h3>
+                <h3 style={{ backgroundColor: color }} >{title}</h3>
             </div>
             <div className="Categories">
                 <button className="Button">Productos</button>
