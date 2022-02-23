@@ -1,7 +1,7 @@
 import './Item.css'
+import { Link } from 'react-router-dom'
 
-
-const Item = ({ routing, productList, ...rest }) => {
+const Item = ({ productList, ...rest }) => {
 
     console.log(productList.id)
     return (
@@ -13,7 +13,7 @@ const Item = ({ routing, productList, ...rest }) => {
             <p className="Item-Precio">
                 Precio: $ {productList.precio}
             </p>
-            <button className='' onClick={() => routing({ path: 'detail', id: productList.id })} >Ver dettalle</button>
+            <Link to= {`/detail/${productList.id}`} >Ver detalle</Link>
         </article>
 
     )

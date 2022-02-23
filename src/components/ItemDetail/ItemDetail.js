@@ -3,6 +3,9 @@ import './ItemDetail.css'
 
 const ItemDetail = ({ productDetail }) => {
 
+    console.log(productDetail)
+    console.log(productDetail.imagen)
+    
     return (
         <article className="Item-Card">
             <h2 className="Item-Name">

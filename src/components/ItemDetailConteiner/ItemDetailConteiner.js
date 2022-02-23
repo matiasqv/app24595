@@ -8,14 +8,14 @@ const ItemDetailConteiner = ({id}) => {
 
     const [productDetail, setProductDetail] = useState()
     const [loading, setLoading] = useState(true)
-    const { productId } = useParams()
+    const { productListId } = useParams()
 
     console.log(productDetail)
     console.log(loading)
-    console.log(productId)
+    console.log(productListId)
 
     useEffect(() => {
-        getProduct(id).then((productDetail) => {
+        getProduct(productListId).then((productDetail) => {
             setProductDetail(productDetail)
         }).catch(err => {
             console.log(err)
@@ -25,11 +25,11 @@ const ItemDetailConteiner = ({id}) => {
         return (() => {
             setProductDetail()
         })
-    }, [productId])
+    }, [productListId])
 
     console.log(productDetail)
     console.log(loading)
-    console.log(productId)
+    console.log(productListId)
 
     return (
         <div className='ItemDetailContainer'>

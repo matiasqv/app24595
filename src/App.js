@@ -4,26 +4,23 @@ import { useState } from 'react'
 import NavBar from './components/NavBar/Navbar'
 import ItemListContainer from './components/ItemListContainer/ItemListContainer'
 import ItemDetailConteiner from './components/ItemDetailConteiner/ItemDetailConteiner'
-
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 
 const App = () => {
-  const [route, setRoute] = useState({
-    path: 'list',
-    id: 1
-  })
+
 
   return (
     <div className="App">
-      {/*       <div>
-        <button onClick = {() => setRoute ('list')}>list</button>
-        <button onClick = {() => setRoute ('detail')}>Detail</button>
-      </div> */}
-      {/* este title  y color viaja a NavBar por las props */}
-      <NavBar routing={setRoute} title="e-miTienda" color="purple" />
-      {/*{route === 'list' ? <ItemListContainer/> : null}  // Forma de escribirlo en forma ternaria*/}
-      {route.path === 'list' && <ItemListContainer routing={setRoute} greeting="HOLA MUNDO" color="purple" />}
-      {route.path === 'detail' && <ItemDetailConteiner id={route.id} />}
+      <BrowserRouter>
+        <NavBar title="e-miTienda" color="purple" />
+        <Routes>
+          <Route path='/' element={<ItemListContainer greeting="HOLA MUNDO" color="purple"/>} />
+          <Route path='about' element={<h1>About</h1>} />
+          <Route path='producto/:productoId' element={<ItemListContainer />} />
+          <Route path='detail/:productListId' element={<ItemDetailConteiner />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }

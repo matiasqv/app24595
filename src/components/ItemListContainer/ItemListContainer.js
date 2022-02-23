@@ -2,7 +2,7 @@ import './ItemListContainer.css';
 import ItemCount from '../ItemCount/ItemCount';
 import ItemList from '../ItemList/ItemList';
 
-const ItemListContainer = ({routing, greeting = "Hola", color = "Red", ...rest }) => {
+const ItemListContainer = ({ greeting = "Hola", color = "Red", ...rest }) => {
 
     const mostrar = (count) => {
         if (count > 0) {
@@ -17,7 +17,7 @@ const ItemListContainer = ({routing, greeting = "Hola", color = "Red", ...rest }
             <h4 style={{ color: color }}>{greeting}</h4>
             <br />
             <ItemCount stock={20} initial={1} mostrar={mostrar} />
-            <ItemList products={[]} routing={routing}/>
+            <ItemList products={[]} />
         </header>
     );
 }
