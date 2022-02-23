@@ -4,7 +4,7 @@ import Item from '../Item/Item';
 import './ItemList.css'
 
 
-const ItemList = ({routing, product,...rest}) => {
+const ItemList = ({routing, ...rest}) => {
 
     const [products, setProducts] = useState([])
 
@@ -18,7 +18,7 @@ const ItemList = ({routing, product,...rest}) => {
         <div className='Item-list'>
             <ul className="List">
                 {products.map(product =>
-                    <Item key={product.id} product={product} routing={routing} />
+                    <Item key={product.id} productList={product} routing={routing} />
                 )}
             </ul>
         </div>
