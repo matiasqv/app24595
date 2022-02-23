@@ -1,7 +1,7 @@
 import './Item.css'
 
 
-const Item = ({ productList }) => {
+const Item = ({routing, productList, ...rest }) => {
     return (
         <article className="Item-Card">
             <h2 className="Item-Name">
@@ -11,7 +11,9 @@ const Item = ({ productList }) => {
             <p className="Item-Precio">
                 Precio: $ {productList.precio}
             </p>
+            <button className='' onClick={() => routing({ path: 'detail', id: productList.id })} >Ver dettalle</button>
         </article>
+
     )
 }
 
