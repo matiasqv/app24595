@@ -10,7 +10,7 @@ import ItemDetailConteiner from './components/ItemDetailConteiner/ItemDetailCont
 const App = () => {
   const [route, setRoute] = useState({
     path: 'list',
-    id: '1'
+    id: 1
   })
 
   return (
@@ -23,7 +23,7 @@ const App = () => {
       <NavBar title="e-miTienda" color="purple" />
       {/*{route === 'list' ? <ItemListContainer/> : null}  // Forma de escribirlo en forma ternaria*/}
       {route.path === 'list' && <ItemListContainer routing={setRoute} greeting="HOLA MUNDO" color="purple" />}
-      {route.path === 'detail' && <ItemDetailConteiner />}
+      {route.path === 'detail' && <ItemDetailConteiner id= {route.id} />}
     </div>
   );
 }

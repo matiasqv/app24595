@@ -4,14 +4,18 @@ import ItemDetail from '../ItemDetail/ItemDetail';
 import './ItemDetailConteiner.css';
 import { useParams } from 'react-router-dom'
 
-const ItemDetailConteiner = () => {
+const ItemDetailConteiner = ({id}) => {
 
     const [productDetail, setProductDetail] = useState()
     const [loading, setLoading] = useState(true)
     const { productId } = useParams()
 
+    console.log(productDetail)
+    console.log(loading)
+    console.log(productId)
+
     useEffect(() => {
-        getProduct(productId).then((productDetail) => {
+        getProduct(id).then((productDetail) => {
             setProductDetail(productDetail)
         }).catch(err => {
             console.log(err)
@@ -22,6 +26,10 @@ const ItemDetailConteiner = () => {
             setProductDetail()
         })
     }, [productId])
+
+    console.log(productDetail)
+    console.log(loading)
+    console.log(productId)
 
     return (
         <div className='ItemDetailContainer'>

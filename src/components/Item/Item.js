@@ -1,17 +1,19 @@
 import './Item.css'
 
 
-const Item = ({routing, productList, ...rest }) => {
+const Item = ({ routing, product, ...rest }) => {
+
+    console.log(product.id)
     return (
         <article className="Item-Card">
             <h2 className="Item-Name">
-                {productList.marca}
+                {product.marca}
             </h2>
-            <img src={productList.imagen} alt={productList.marca} className="Item-Img" />
+            <img src={product.imagen} alt={product.marca} className="Item-Img" />
             <p className="Item-Precio">
-                Precio: $ {productList.precio}
+                Precio: $ {product.precio}
             </p>
-            <button className='' onClick={() => routing({ path: 'detail', id: productList.id })} >Ver dettalle</button>
+            <button className='' onClick={() => routing({ path: 'detail', id: product.id })} >Ver dettalle</button>
         </article>
 
     )
