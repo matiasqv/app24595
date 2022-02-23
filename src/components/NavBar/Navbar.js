@@ -4,7 +4,7 @@ import CartWidget from '../CartWidget/CartWidget.js'
 const NavBar = ({ routing, title, color, ...rest }) => {
     return (
         <nav className="NavBar">
-            <div className="NavBar-logo" onClick={() => routing({ path: 'list', id: 1 })}>
+            <div className="NavBar-logo" onClick={() => routing({ path: 'list', id: 1})}>
                 <img src={'./images/logo.svg'} className="App-logo" alt="logo" />
                 {/* props.title viene desde App.js por el props */}
                 <h3 style={{ backgroundColor: color }} >{title}</h3>

@@ -15,15 +15,15 @@ const App = () => {
 
   return (
     <div className="App">
-{/*       <div>
+      {/*       <div>
         <button onClick = {() => setRoute ('list')}>list</button>
         <button onClick = {() => setRoute ('detail')}>Detail</button>
       </div> */}
       {/* este title  y color viaja a NavBar por las props */}
-      <NavBar ruoting = {setRoute} title="e-miTienda" color="purple" />
+      <NavBar routing={setRoute} title="e-miTienda" color="purple" />
       {/*{route === 'list' ? <ItemListContainer/> : null}  // Forma de escribirlo en forma ternaria*/}
       {route.path === 'list' && <ItemListContainer routing={setRoute} greeting="HOLA MUNDO" color="purple" />}
-      {route.path === 'detail' && <ItemDetailConteiner id= {route.id} />}
+      {route.path === 'detail' && <ItemDetailConteiner id={route.id} />}
     </div>
   );
 }
