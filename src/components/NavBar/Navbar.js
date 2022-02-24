@@ -1,19 +1,32 @@
 import './NavBar.css'
 import CartWidget from '../CartWidget/CartWidget.js'
 import { NavLink } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { getCategorias } from '../../asyncmock'
+
 
 const NavBar = ({ title, color, ...rest }) => {
+
+    const [categorias, setCategorias] = useState([])
+
+    useEffect(() => {
+        getCategorias().then(categorias => {
+            setCategorias(categorias)
+            console.log(categorias)
+        })
+    }, [])
+
+
+
+
     return (
         <nav className="NavBar">
             <NavLink className="NavBar-logo" to={'/'}>
                 <img src={'../images/logo.svg'} className="App-logo" alt="logo" />
-                {/* props.title viene desde App.js por el props */}
                 <h3 style={{ backgroundColor: color }} >{title}</h3>
             </NavLink>
-            <div className="Categories">
-                <NavLink to={'/producto/Bebida'} className={({ isActive }) => isActive ? 'ActiveButton' : 'Button'}>Bebida</NavLink>
-                <NavLink to={'/producto/Carniceria'} className={({ isActive }) => isActive ? 'ActiveButton' : 'Button'}>Carniceria</NavLink>
-                <NavLink to={'/producto/Lacteos'} className={({ isActive }) => isActive ? 'ActiveButton' : 'Button'}>Lacteos</NavLink>
+            <div className="Categorias">
+                {categorias.map(cat => <NavLink key={cat.id} to={`/producto/${cat.id}`} className={({ isActive }) => isActive ? 'ActiveButton' : 'Button'}>{cat.descripcion}</NavLink>)}
             </div>
             <div className="LoggaIn">
                 <button className="LoggaInButton">Logga In</button>
@@ -21,6 +34,7 @@ const NavBar = ({ title, color, ...rest }) => {
             <CartWidget />
         </nav>
     )
+
 }
 
 export default NavBar

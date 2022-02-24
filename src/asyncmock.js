@@ -14,6 +14,24 @@ const products = [
     { id: 12, producto: "Lacteos", marca: "Leche San Juan", imagen: "../img/leche.jpg", precio: "120", detalles: "Entera, 1 Litro, 3 % de grasas", stock: "10" }
 ]
 
+const categorias = [
+    { id: "Bebida", descripcion: "Bebida" },
+    { id: "Panaderia", descripcion: "Panaderia" },
+    { id: "Almacen", descripcion: "Almacen" },
+    { id: "Carniceria", descripcion: "Carniceria" },
+    { id: "Lacteos", descripcion: "Lacteos" }
+]
+
+export const getCategorias = () => {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve(categorias)
+        }, 1000)
+    })
+}
+
+
+
 export const getProducts = () => {
     return new Promise((resolve) => {
         setTimeout(() => {
@@ -31,11 +49,11 @@ export const getProduct = (id) => {
     })
 }
 
-export const getCategoria = (id) => {
+/* export const getCategoria = (id) => {
     return new Promise((resolve) => {
-        const productsToResolve = idCategory ? products.filter(item => item.marca === marca) : products 
+        const productsToResolve = idCategory ? products.filter(item => item.marca === marca) : products
         setTimeout(() => {
             resolve(productsToResolve)
         }, 1000)
     })
-}
+} */
