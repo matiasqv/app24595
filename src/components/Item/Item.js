@@ -13,7 +13,7 @@ const Item = ({ productList, ...rest }) => {
             <p className="Item-Precio">
                 Precio: $ {productList.precio}
             </p>
-            <Link to= {`/detail/${productList.id}`} >Ver detalle</Link>
+            <Link className="Item-Name" to= {`/detail/${productList.id}`} >Ver detalle</Link>
         </article>
 
     )

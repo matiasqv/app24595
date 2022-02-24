@@ -30,6 +30,17 @@ h3{
     cursor: pointer;
     outline: inherit;
 }
+.ActiveButton {
+    margin: 0 40px 20px;
+    width: auto;
+    padding: 12px;
+    font-size: 2em;
+    background: rgb(4, 247, 16);
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+    outline: inherit;
+}
 .LoggaIn {
     display: flex;
 

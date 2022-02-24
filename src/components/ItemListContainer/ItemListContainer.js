@@ -1,14 +1,19 @@
-import './ItemListContainer.css';
-import ItemCount from '../ItemCount/ItemCount';
-import ItemList from '../ItemList/ItemList';
+import './ItemListContainer.css'
+import ItemList from '../ItemList/ItemList'
+import { useEffect, useState } from 'react'
+import { getProducts } from '../../asyncmock'
 
 const ItemListContainer = ({ greeting = "Hola", color = "Red", ...rest }) => {
 
-    const mostrar = (count) => {
-        if (count > 0) {
-            console.log("Se agreo al carrito", count, "unidades")
-        }
-    }
+    const [products, setProducts] = useState([])
+
+    useEffect(() => {
+        getProducts().then((products) => {
+            setProducts(products)
+        })
+    }, [])
+    
+
 
     return (
         <header className="ItemListContainer">
@@ -16,8 +21,7 @@ const ItemListContainer = ({ greeting = "Hola", color = "Red", ...rest }) => {
             <h3>Lo que buscas y mas...</h3>
             <h4 style={{ color: color }}>{greeting}</h4>
             <br />
-            <ItemCount stock={20} initial={1} mostrar={mostrar} />
-            <ItemList products={[]} />
+            <ItemList products={products}/>
         </header>
     );
 }

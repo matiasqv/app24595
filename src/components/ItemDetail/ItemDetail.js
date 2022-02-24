@@ -1,11 +1,20 @@
 
 import './ItemDetail.css'
+import ItemCount from '../ItemCount/ItemCount'
 
 const ItemDetail = ({ productDetail }) => {
 
     console.log(productDetail)
     console.log(productDetail.imagen)
-    
+
+
+    const onAdd = (count) => {
+        if (count > 0) {
+            console.log("Se agreo al carrito", count, "unidades")
+        }
+    }
+
+
     return (
         <article className="Item-Card">
             <h2 className="Item-Name">
@@ -15,7 +24,7 @@ const ItemDetail = ({ productDetail }) => {
             <p className="Item-Precio">
                 Precio: $ {productDetail.precio}
             </p>
-            <div>
+            <div className=''>
                 <p className="List">
                     {productDetail.detalles}
                 </p>
@@ -25,6 +34,9 @@ const ItemDetail = ({ productDetail }) => {
                 <p className="List">
                     Stock: {productDetail.stock}
                 </p>
+            </div>
+            <div className="Item-Card">
+                <ItemCount stock={productDetail.stock} initial={1} onAdd={onAdd} />
             </div>
         </article>
     )
