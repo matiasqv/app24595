@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import { getProduct } from '../../asyncmock';
 import ItemDetail from '../ItemDetail/ItemDetail';
-import './ItemDetailConteiner.css';
+import './ItemDetailContainer.css';
 import { useParams } from 'react-router-dom'
 
-const ItemDetailConteiner = () => {
+const ItemDetailContainer = () => {
 
     const [productDetail, setProductDetail] = useState()
     const [loading, setLoading] = useState(true)
@@ -22,9 +22,7 @@ const ItemDetailConteiner = () => {
         }).finally(() => {
             setLoading(false)
         })
-        return (() => {
-            setProductDetail()
-        })
+
     }, [productListId])
 
     console.log(productDetail)
@@ -42,4 +40,4 @@ const ItemDetailConteiner = () => {
     )
 }
 
-export default ItemDetailConteiner
+export default ItemDetailContainer

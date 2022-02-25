@@ -6,7 +6,7 @@ import { getProds } from '../../asyncmock'
 import { useParams } from 'react-router-dom'
 
 
-const ItemListContainer = ({ greeting = "Hola", color = "Red", ...rest }) => {
+const ItemListContainer = ({ cat, greeting = "Hola", color = "Red", ...rest }) => {
 
     const [products, setProducts] = useState([])
 
@@ -16,19 +16,30 @@ const ItemListContainer = ({ greeting = "Hola", color = "Red", ...rest }) => {
             console.log(products)
         })
     }, [])
-    
+
     const [prods, setProds] = useState([])
     const { catId } = useParams()
 
+
+
     console.log(catId)
+    console.log(prods)
+    console.log(prods.length)
+    console.log(prods.producto)
 
 
     useEffect(() => {
         getProds(catId).then((prods) => {
             setProds(prods)
             console.log(prods)
+            console.log(prods.length)
+            console.log(prods[0])
+            console.log(document.URL)
+            console.log(catId)
+        }).catch(err => {
+            console.log(err)
         })
-    }, [])
+    }, [catId])
 
     return (
         <header className="ItemListContainer">
@@ -36,8 +47,9 @@ const ItemListContainer = ({ greeting = "Hola", color = "Red", ...rest }) => {
             <h3>Lo que buscas y mas...</h3>
             <h4 style={{ color: color }}>{greeting}</h4>
             <br />
-           { catId? <ItemList products={prods}/> :
-            <ItemList products={products}/>}
+            {(prods.length !== 0) ?
+                <ItemList products={prods} /> :
+                <ItemList products={products} />}
         </header>
     );
 }

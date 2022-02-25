@@ -3,7 +3,7 @@ import Item from '../Item/Item'
 import './ItemList.css'
 
 
-const ItemList = ({products, ...rest}) => {
+const ItemList = ({ products, ...rest }) => {
 
 
 
@@ -11,11 +11,11 @@ const ItemList = ({products, ...rest}) => {
         <div className='Item-list'>
             <ul className="List">
                 {products.map(product =>
-                    <Item key={product.id} productList={product}  />
+                    <Item key={product.id} productList={product} />
                 )}
             </ul>
         </div>
-        
+
     )
 }
 export default ItemList
