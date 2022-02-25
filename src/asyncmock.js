@@ -3,7 +3,7 @@ const products = [
     { id: 1, producto: "Bebida", marca: "CocaCola", imagen: "../img/cocacola.jpg", precio: "300", detalles: "CocaCola en lata, 300 cl, con azucar", stock: "35" },
     { id: 2, producto: "Bebida", marca: "Agua de Mar", imagen: "../img/aguamineral.jpg", precio: "150", detalles: "Importada, 500 cl, sin sodio", stock: "20" },
     { id: 3, producto: "Bebida", marca: "Jugo Pong", imagen: "../img/jugo.jpg", precio: "200", detalles: "Jugo Natural, 250 cl, sin concervantes", stock: "39" },
-    { id: 4, producto: "Panaderi", marca: "Pan", imagen: "../img/pan.jpg", precio: "350", detalles: "Pan blanco, x kg, sin concervantes", stock: "18" },
+    { id: 4, producto: "Panaderia", marca: "Pan", imagen: "../img/pan.jpg", precio: "350", detalles: "Pan blanco, x kg, sin concervantes", stock: "18" },
     { id: 5, producto: "Almacen", marca: "Tomate Alcon", imagen: "../img/latatomate.jpg", precio: "576", detalles: "Tomate en lata, 400 g, Cubitado", stock: "12" },
     { id: 6, producto: "Almacen", marca: "Fideos Don", imagen: "../img/fideos.jpg", precio: "259", detalles: "Fideos Largos, 500 gr, a base de trigo", stock: "11" },
     { id: 7, producto: "Carniceria", marca: "Salmon Rosado", imagen: "../img/salmon.jpg", precio: "999", detalles: "Salmon de Chile, 750 gr, Importado", stock: "2" },
