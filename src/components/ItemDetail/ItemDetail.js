@@ -4,16 +4,11 @@ import ItemCount from '../ItemCount/ItemCount'
 
 const ItemDetail = ({ productDetail }) => {
 
-    console.log(productDetail)
-    console.log(productDetail.imagen)
-
-
     const onAdd = (count) => {
         if (count > 0) {
             console.log("Se agreo al carrito", count, "unidades")
         }
     }
-
 
     return (
         <article className="Item-Card">

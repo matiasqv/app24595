@@ -10,10 +10,6 @@ const ItemDetailContainer = () => {
     const [loading, setLoading] = useState(true)
     const { productListId } = useParams()
 
-    console.log(productDetail)
-    console.log(loading)
-    console.log(productListId)
-
     useEffect(() => {
         getProduct(productListId).then((productDetail) => {
             setProductDetail(productDetail)
@@ -24,10 +20,6 @@ const ItemDetailContainer = () => {
         })
 
     }, [productListId])
-
-    console.log(productDetail)
-    console.log(loading)
-    console.log(productListId)
 
     return (
         <div className='ItemDetailContainer'>

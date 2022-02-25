@@ -31,7 +31,6 @@ export const getCategorias = () => {
 }
 
 
-
 export const getProducts = () => {
     return new Promise((resolve) => {
         setTimeout(() => {
@@ -41,50 +40,21 @@ export const getProducts = () => {
 }
 
 
-console.log(products)
-
-
 export const getProduct = (id) => {
-
-    console.log()
     return new Promise((resolve) => {
         const prod = products.find(p => p.id === parseInt(id))
         setTimeout(() => {
             resolve(prod)
-            console.log(prod)
-            
         }, 1000)
     })
 }
 
 
-export const getProds = (catId ) => {
-
-    console.log(catId )
+export const getProds = (catId) => {
     return new Promise((resolve) => {
-        const prods = products.filter(p => p.producto === catId )
+        const prods = products.filter(p => p.producto === catId)
         setTimeout(() => {
             resolve(prods)
-            console.log(prods)
-            
         }, 1000)
     })
 }
-
-
-
-
-
-/* export const getCategoria = (cat) => {
-
-    console.log(cat)
-    return new Promise((resolve) => {
-        const productsToResolve = cat.id ? products.filter(item => item.producto === cat.id) : products
-        const productsToResolve = products.filter(p => p.cat=== cat) 
-        setTimeout(() => {
-            resolve(productsToResolve)
-            console.log(productsToResolve)
-        }, 1000)
-    })
-}
- */
