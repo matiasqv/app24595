@@ -2,6 +2,9 @@ import './ItemListContainer.css'
 import ItemList from '../ItemList/ItemList'
 import { useEffect, useState } from 'react'
 import { getProducts } from '../../asyncmock'
+import { getProds } from '../../asyncmock'
+import { useParams } from 'react-router-dom'
+
 
 const ItemListContainer = ({ greeting = "Hola", color = "Red", ...rest }) => {
 
@@ -10,10 +13,22 @@ const ItemListContainer = ({ greeting = "Hola", color = "Red", ...rest }) => {
     useEffect(() => {
         getProducts().then((products) => {
             setProducts(products)
+            console.log(products)
         })
     }, [])
     
+    const [prods, setProds] = useState([])
+    const { catId } = useParams()
 
+    console.log(catId)
+
+
+    useEffect(() => {
+        getProds(catId).then((prods) => {
+            setProds(prods)
+            console.log(prods)
+        })
+    }, [])
 
     return (
         <header className="ItemListContainer">
@@ -21,7 +36,8 @@ const ItemListContainer = ({ greeting = "Hola", color = "Red", ...rest }) => {
             <h3>Lo que buscas y mas...</h3>
             <h4 style={{ color: color }}>{greeting}</h4>
             <br />
-            <ItemList products={products}/>
+           { catId? <ItemList products={prods}/> :
+            <ItemList products={products}/>}
         </header>
     );
 }

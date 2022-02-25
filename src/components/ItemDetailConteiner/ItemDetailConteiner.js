@@ -4,7 +4,7 @@ import ItemDetail from '../ItemDetail/ItemDetail';
 import './ItemDetailConteiner.css';
 import { useParams } from 'react-router-dom'
 
-const ItemDetailConteiner = ({id}) => {
+const ItemDetailConteiner = () => {
 
     const [productDetail, setProductDetail] = useState()
     const [loading, setLoading] = useState(true)

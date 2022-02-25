@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react'
 import { getCategorias } from '../../asyncmock'
 
 
-const NavBar = ({ title, color, ...rest }) => {
+const NavBar = ({ cat, title, color, ...rest }) => {
 
     const [categorias, setCategorias] = useState([])
 
@@ -17,7 +17,7 @@ const NavBar = ({ title, color, ...rest }) => {
     }, [])
 
 
-
+    console.log(cat)
 
     return (
         <nav className="NavBar">
@@ -26,7 +26,7 @@ const NavBar = ({ title, color, ...rest }) => {
                 <h3 style={{ backgroundColor: color }} >{title}</h3>
             </NavLink>
             <div className="Categorias">
-                {categorias.map(cat => <NavLink key={cat.id} to={`/producto/${cat.id}`} className={({ isActive }) => isActive ? 'ActiveButton' : 'Button'}>{cat.descripcion}</NavLink>)}
+                {categorias.map(cat => <NavLink key={cat.id} cat={cat} to={`/producto/${cat.id}`} className={({ isActive }) => isActive ? 'ActiveButton' : 'Button'}>{cat.descripcion}</NavLink>)}
             </div>
             <div className="LoggaIn">
                 <button className="LoggaInButton">Logga In</button>
@@ -34,7 +34,7 @@ const NavBar = ({ title, color, ...rest }) => {
             <CartWidget />
         </nav>
     )
-
+    console.log(cat)
 }
 
 export default NavBar

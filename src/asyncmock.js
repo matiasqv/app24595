@@ -1,3 +1,6 @@
+
+import { useParams } from 'react-router-dom'
+
 // ARRAY products
 const products = [
     { id: 1, producto: "Bebida", marca: "CocaCola", imagen: "../img/cocacola.jpg", precio: "300", detalles: "CocaCola en lata, 300 cl, con azucar", stock: "35" },
@@ -40,20 +43,50 @@ export const getProducts = () => {
     })
 }
 
+
+console.log(products)
+
+
 export const getProduct = (id) => {
+
+    console.log()
     return new Promise((resolve) => {
         const prod = products.find(p => p.id === parseInt(id))
         setTimeout(() => {
             resolve(prod)
+            console.log(prod)
+            
         }, 1000)
     })
 }
 
-/* export const getCategoria = (id) => {
+
+export const getProds = (catId ) => {
+
+    console.log(catId )
     return new Promise((resolve) => {
-        const productsToResolve = idCategory ? products.filter(item => item.marca === marca) : products
+        const prods = products.filter(p => p.producto === catId )
         setTimeout(() => {
-            resolve(productsToResolve)
+            resolve(prods)
+            console.log(prods)
+            
         }, 1000)
     })
-} */
+}
+
+
+
+
+
+export const getCategoria = (cat) => {
+
+    console.log(cat)
+    return new Promise((resolve) => {
+  /*       const productsToResolve = cat.id ? products.filter(item => item.producto === cat.id) : products */
+        const productsToResolve = products.filter(p => p.cat=== cat) 
+        setTimeout(() => {
+            resolve(productsToResolve)
+            console.log(productsToResolve)
+        }, 1000)
+    })
+}
