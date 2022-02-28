@@ -9,15 +9,25 @@ import { useParams } from 'react-router-dom'
 const ItemListContainer = ({ cat, greeting = "Hola", color = "Red", ...rest }) => {
 
     const [products, setProducts] = useState([])
+    const [prods, setProds] = useState([])
+    const { catId } = useParams()
+
 
     useEffect(() => {
         getProducts().then((products) => {
             setProducts(products)
+        }).catch(err => {
+            console.log(err)
         })
+
+        return (() => {
+            setProducts()
+        })
+
     }, [])
 
-    const [prods, setProds] = useState([])
-    const { catId } = useParams()
+
+
 
     useEffect(() => {
         getProds(catId).then((prods) => {

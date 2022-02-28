@@ -1,13 +1,16 @@
 
 import './ItemDetail.css'
 import ItemCount from '../ItemCount/ItemCount'
+import { useState } from 'react'
+import { Link } from 'react-router-dom'
+import CartWidget from '../CartWidget/CartWidget'
 
 const ItemDetail = ({ productDetail }) => {
 
+    const [count, setCount] = useState(0)
+
     const onAdd = (count) => {
-        if (count > 0) {
-            console.log("Se agreo al carrito", count, "unidades")
-        }
+        setCount(count)
     }
 
     return (
@@ -31,7 +34,14 @@ const ItemDetail = ({ productDetail }) => {
                 </p>
             </div>
             <div className="Item-Card">
-                <ItemCount stock={productDetail.stock} initial={1} onAdd={onAdd} />
+
+                {/* <ItemCount stock={productDetail.stock} initial={1} onAdd={onAdd} /> */}
+                {/* {count !== 0 ? <h2>Ir al carriro</h2> : <ItemCount stock={productDetail.stock} initial={1} onAdd={onAdd} />} */}
+                {/* {count === 0 ? <ItemCount stock={productDetail.stock} initial={1} onAdd={onAdd} /> : <h2>Ir al carriro</h2> */}
+
+                {count === 0 ? <ItemCount stock={productDetail.stock} initial={1} onAdd={onAdd} /> : <Link className="Item-Name" to={`/cart`} >Ir al carrito</Link>
+                }
+
             </div>
         </article>
     )
