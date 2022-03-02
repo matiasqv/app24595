@@ -10,10 +10,12 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 export const MyContext = React.createContext('NO HAY NADA')
 
-const myvalue = 15
 
 const App = () => {
-  const [count, setCount] = useState('PRODUCTO')
+  const [cart, setCart] = useState('PRODUCTO')
+
+  console.log(cart)
+
 
 
   return (
@@ -21,13 +23,15 @@ const App = () => {
 
       <BrowserRouter>
         <NavBar title="e-miTienda" color="red" />
-        <MyContext.Provider value={{count, setCount}}><Routes>
-          <Route path='/' element={<ItemListContainer greeting="HOLA" color="purple" />} />
-          <Route path='/about' element={<h1>About</h1>} />
-          <Route path='/producto/:catId' element={<ItemListContainer />} />
-          <Route path='/detail/:productListId' element={<ItemDetailContainer />} />
-          <Route path='/cart' element={<Cart />} />
-        </Routes></MyContext.Provider>
+        <MyContext.Provider value={{ cart, setCart }}>
+          <Routes>
+            <Route path='/' element={<ItemListContainer greeting="HOLA" color="purple" />} />
+            <Route path='/about' element={<h1>About</h1>} />
+            <Route path='/producto/:catId' element={<ItemListContainer />} />
+            <Route path='/detail/:productListId' element={<ItemDetailContainer />} />
+            <Route path='/cart' element={<Cart />} />
+          </Routes>
+        </MyContext.Provider>
       </BrowserRouter>
 
     </div>

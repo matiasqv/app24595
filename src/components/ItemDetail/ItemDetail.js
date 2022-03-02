@@ -9,12 +9,17 @@ import { MyContext } from '../../App'
 const ItemDetail = ({ productDetail }) => {
     const [count, setCount] = useState(0)
     
-    const contexValue = useContext(MyContext)
-    console.log(contexValue)
+    const  {cart, setCart} = useContext(MyContext)
+    console.log(cart)
+
 
     const onAdd = (count) => {
         setCount(count)
+        setCart(`Agregue ${count}`)
     }
+
+    console.log(cart)
+
 
     return (
         <article className="Item-Card">
