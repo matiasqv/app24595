@@ -1,13 +1,19 @@
 import './NavBar.css'
 import CartWidget from '../CartWidget/CartWidget.js'
 import { NavLink } from 'react-router-dom'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useContext } from 'react'
 import { getCategorias } from '../../asyncmock'
+import { MyContext } from '../../App'
+
 
 
 const NavBar = ({ catId, title, color, ...rest }) => {
 
     const [categorias, setCategorias] = useState([])
+
+
+    const contexValue = useContext(MyContext)
+    console.log(contexValue)
 
     useEffect(() => {
         getCategorias().then(categorias => {

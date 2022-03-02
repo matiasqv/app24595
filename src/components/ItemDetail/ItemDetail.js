@@ -1,13 +1,16 @@
 
 import './ItemDetail.css'
 import ItemCount from '../ItemCount/ItemCount'
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import { Link } from 'react-router-dom'
-import CartWidget from '../CartWidget/CartWidget'
+import CartWidget from '../CartWidget/CartWidget' /* Ver si lo quito */
+import { MyContext } from '../../App'
 
 const ItemDetail = ({ productDetail }) => {
-
     const [count, setCount] = useState(0)
+    
+    const contexValue = useContext(MyContext)
+    console.log(contexValue)
 
     const onAdd = (count) => {
         setCount(count)
