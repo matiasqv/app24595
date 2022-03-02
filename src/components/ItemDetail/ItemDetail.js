@@ -16,6 +16,7 @@ const ItemDetail = ({ productDetail }) => {
     const onAdd = (count) => {
         setCount(count)
         setCart(`Agregue ${count}`)
+        localStorage.setItem('key' , 'value')
     }
 
     console.log(cart)

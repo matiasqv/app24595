@@ -1,6 +1,6 @@
 
 import './App.css'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import NavBar from './components/NavBar/Navbar'
 import ItemListContainer from './components/ItemListContainer/ItemListContainer'
 import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer'
@@ -15,6 +15,10 @@ const App = () => {
   const [cart, setCart] = useState('PRODUCTO')
 
   console.log(cart)
+
+  useEffect (() => {
+    console.log(localStorage.getItem('key'))
+  })
 
 
 
