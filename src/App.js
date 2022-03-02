@@ -18,7 +18,7 @@ const App = () => {
 
   useEffect (() => {
     console.log(localStorage.getItem('key'))
-  })
+  }, [])
 
 
 
