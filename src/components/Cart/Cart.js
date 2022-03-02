@@ -1,8 +1,7 @@
 
 import '../CartWidget/CartWidget.css'
 import { useState, useContext } from 'react'
-import { MyContext } from '../../App'
-
+import CartContext from '../../context/CartContext'
 
 /* VER BIEN AQUI LOS CLASSNAME Y ESTILOS, LAS IMPORTACIONES */
 
@@ -10,7 +9,7 @@ const cantidad = 10
 
 const Cart = () => {
 
-    const  {cart, setCart} = useContext(MyContext)
+    const  {cart, setCart} = useContext(CartContext)
     console.log(cart)
 
     return (

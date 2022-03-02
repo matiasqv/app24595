@@ -6,17 +6,14 @@ import ItemListContainer from './components/ItemListContainer/ItemListContainer'
 import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer'
 import Cart from './components/Cart/Cart'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { CartContextProvider } from './context/CartContext'
 
-
-export const MyContext = React.createContext('NO HAY NADA')
 
 
 const App = () => {
-  const [cart, setCart] = useState('PRODUCTO')
 
-  console.log(cart)
 
-  useEffect (() => {
+  useEffect(() => {
     console.log(localStorage.getItem('key'))
   }, [])
 
@@ -24,10 +21,9 @@ const App = () => {
 
   return (
     <div className="App">
-
-      <BrowserRouter>
-        <NavBar title="e-miTienda" color="red" />
-        <MyContext.Provider value={{ cart, setCart }}>
+      <CartContextProvider>
+        <BrowserRouter>
+          <NavBar title="e-miTienda" color="red" />
           <Routes>
             <Route path='/' element={<ItemListContainer greeting="HOLA" color="purple" />} />
             <Route path='/about' element={<h1>About</h1>} />
@@ -35,9 +31,8 @@ const App = () => {
             <Route path='/detail/:productListId' element={<ItemDetailContainer />} />
             <Route path='/cart' element={<Cart />} />
           </Routes>
-        </MyContext.Provider>
-      </BrowserRouter>
-
+        </BrowserRouter>
+      </CartContextProvider>
     </div>
   );
 }

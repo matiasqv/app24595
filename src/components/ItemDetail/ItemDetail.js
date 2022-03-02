@@ -4,22 +4,23 @@ import ItemCount from '../ItemCount/ItemCount'
 import { useState, useContext } from 'react'
 import { Link } from 'react-router-dom'
 import CartWidget from '../CartWidget/CartWidget' /* Ver si lo quito */
-import { MyContext } from '../../App'
+import CartContext from '../../context/CartContext'
+
+
 
 const ItemDetail = ({ productDetail }) => {
     const [count, setCount] = useState(0)
     
-    const  {cart, setCart} = useContext(MyContext)
-    console.log(cart)
+ const {cart,  setCart} = useContext(CartContext)
 
 
     const onAdd = (count) => {
         setCount(count)
-        setCart(`Agregue ${count}`)
+        setCart([...cart, count])
         localStorage.setItem('key' , `${count}`)
     }
 
-    console.log(cart)
+
 
 
     return (
