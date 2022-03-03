@@ -13,9 +13,6 @@ const ItemDetail = ({ productDetail }) => {
     const onAdd = (count) => {
         setCount(count)
         productToAdd(productDetail, count)
-
-
-        localStorage.setItem('key', `${count}`)
     }
 
     return (

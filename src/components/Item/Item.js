@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 
 const Item = ({ productList, ...rest }) => {
 
-    /*  console.log(productList.id) */
     return (
         <article className="Item-Card">
             <h2 className="Item-Name">

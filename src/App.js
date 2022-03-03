@@ -10,10 +10,6 @@ import { CartContextProvider } from './context/CartContext'
 
 const App = () => {
 
-  useEffect(() => {
-    console.log(localStorage.getItem('key'))
-  }, [])
-
   return (
     <div className="App">
       <CartContextProvider>
