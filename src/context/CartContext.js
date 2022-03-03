@@ -7,7 +7,6 @@ export const CartContextProvider = ({ children }) => {
 
     const [cart, setCart] = useState([])
 
-    
     console.log(cart)
 
     const productToAdd = (productDetail, count) => {
@@ -36,29 +35,26 @@ export const CartContextProvider = ({ children }) => {
                 return product
             }
         })
- /*        setCart(newProducts)
-        console.log(newProducts) */
+        setCart(newProducts)
+        console.log(newProducts)
     }
-
-
-    /* LIMPIAR TODOS LOS PRODUCTOS */
 
     const clearItems = () => {
-     setCart([])
+        setCart([])
     }
-
-    /* remover Item */
 
     const removerItem = (id) => {
         const itemsfiltrados = cart.filter((product) => product.id !== id)
+        setCart(itemsfiltrados)
     }
-
 
 
     return (
         <Context.Provider value={{
             cart,
-            productToAdd
+            productToAdd,
+            removerItem,
+            clearItems
         }}>
             {children}
         </Context.Provider>

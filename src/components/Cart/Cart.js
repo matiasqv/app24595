@@ -19,10 +19,7 @@ const Cart = ({ }) => {
             <>
                 {cart.map((productDetail) => (
                     <li key={productDetail.id}>
-                        {productDetail.count}
-                        <h2 className="Item-Name">
-                            {productDetail.marca}
-                        </h2>
+                        Cantidad: {productDetail.count} {productDetail.marca}
                         <img src={productDetail.imagen} alt={productDetail.marca} className="Item-Img" />
                         <p className="Item-Precio">
                             Precio: $ {productDetail.precio}
