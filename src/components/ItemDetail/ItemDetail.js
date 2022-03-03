@@ -10,14 +10,19 @@ import CartContext from '../../context/CartContext'
 
 const ItemDetail = ({ productDetail }) => {
     const [count, setCount] = useState(0)
-    
- const {cart,  setCart} = useContext(CartContext)
+
+    const { productToAdd } = useContext(CartContext)
 
 
     const onAdd = (count) => {
         setCount(count)
-        setCart([...cart, count])
-        localStorage.setItem('key' , `${count}`)
+
+
+        productToAdd (productDetail, count)
+
+
+ /*        setCart([...cart, productToAdd]) */
+        localStorage.setItem('key', `${count}`)
     }
 
 
