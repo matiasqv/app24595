@@ -1,6 +1,6 @@
 
 import './App.css'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect} from 'react'
 import NavBar from './components/NavBar/Navbar'
 import ItemListContainer from './components/ItemListContainer/ItemListContainer'
 import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer'
@@ -8,16 +8,11 @@ import Cart from './components/Cart/Cart'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { CartContextProvider } from './context/CartContext'
 
-
-
 const App = () => {
-
 
   useEffect(() => {
     console.log(localStorage.getItem('key'))
   }, [])
-
-
 
   return (
     <div className="App">
