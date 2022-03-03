@@ -13,3 +13,11 @@
     width: 4em;
 }
 
+.Item-Card-Carrito {
+    padding: 15px;
+    margin: 10px;
+    font-size: 0.75em;
+    background-color: rgb(44, 136, 52);
+    border: 1px solid #0a0202;
+    border-radius: 10px;
+}

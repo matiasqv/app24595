@@ -7,16 +7,12 @@ export const CartContextProvider = ({ children }) => {
 
     const [cart, setCart] = useState([])
 
-    console.log(cart)
-
     const productToAdd = (productDetail, count) => {
         if (isInCart(productDetail.id)) {
-            alert('hay que sumar al carrito');
             sumarCantidad(productDetail, count)
         } else {
             setCart([...cart, { ...productDetail, count }])
         }
-        console.log(productDetail, count)
     }
 
     const isInCart = (id) => {
@@ -36,7 +32,6 @@ export const CartContextProvider = ({ children }) => {
             }
         })
         setCart(newProducts)
-        console.log(newProducts)
     }
 
     const clearItems = () => {
@@ -47,7 +42,6 @@ export const CartContextProvider = ({ children }) => {
         const itemsfiltrados = cart.filter((product) => product.id !== id)
         setCart(itemsfiltrados)
     }
-
 
     return (
         <Context.Provider value={{
