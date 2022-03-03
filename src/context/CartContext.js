@@ -9,7 +9,7 @@ export const CartContextProvider = ({ children }) => {
 
     const productToAdd = (productDetail, count) => {
         if (isInCart(productDetail.id)) {
-            alert ('sumar al carriro');
+            alert ('sumar al carrito');
             sumarCantidad(productDetail, count)
         } else {
             setCart([...cart, { ...productDetail, count }])
