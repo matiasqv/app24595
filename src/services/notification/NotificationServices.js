@@ -19,12 +19,18 @@ const Notification = ({ message = 'aqui estamos', severity }) => {
 
     }
 
+    const config = {
+        style: notificationStyles,
+        className: severity === 'success' ? 'Success' : 'Error'
+    }
+
+
     if (message === '') {
         return null
     }
 
     return (
-        <div style={notificationStyles} className={severity=== 'success' ? 'Success' : 'Error'}>
+        <div {...config} >
             {message}
         </div>
     )
@@ -46,7 +52,7 @@ export const NotificationServicesProvider = ({ children }) => {
     }
 
     return (
-        <NotificationContext.Provider value={ setNotification }>
+        <NotificationContext.Provider value={setNotification}>
             <Notification message={message} severity={severity} />
             {children}
         </NotificationContext.Provider>
