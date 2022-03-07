@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { getProducts } from '../../asyncmock'
 import { getProds } from '../../asyncmock'
 import { useParams } from 'react-router-dom'
+import { useNotificationServices } from '../../services/notification/NotificationServices'
 
 
 const ItemListContainer = ({ cat, greeting = "Hola", color = "Red", ...rest }) => {
@@ -12,8 +13,17 @@ const ItemListContainer = ({ cat, greeting = "Hola", color = "Red", ...rest }) =
     const [prods, setProds] = useState([])
     const { catId } = useParams()
 
+    
+    const setNotification = useNotificationServices ()
+
 
     useEffect(() => {
+        setNotification('success', 'BIEMVENIDO')
+        
+
+
+
+
         getProducts().then((products) => {
             setProducts(products)
         }).catch(err => {

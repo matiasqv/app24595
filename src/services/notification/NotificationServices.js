@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react'
+import { createContext, useState, useContext } from 'react'
 
 
 const Notification = ({ message = 'aqui estamos', severity }) => {
@@ -11,7 +11,7 @@ const Notification = ({ message = 'aqui estamos', severity }) => {
         alignItems: 'center',
         width: 'auto',
         height: 'auto',
-        backgroundColor: 'green',
+        backgroundColor: severity === 'success' ? 'green' : 'red',
         padding: '10px 20px 10px 20px',
         color: 'white'
 
@@ -51,4 +51,6 @@ export const NotificationServicesProvider = ({ children }) => {
     )
 }
 
-export default NotificationContext
+export const useNotificationServices = () => {
+    return useContext(NotificationContext)
+}
