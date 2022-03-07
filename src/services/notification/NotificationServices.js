@@ -1,19 +1,21 @@
+import './NotificationServices.css'
 import { createContext, useState, useContext } from 'react'
 
 
 const Notification = ({ message = 'aqui estamos', severity }) => {
     const notificationStyles = {
         position: 'absolute',
-        top: 100,
-        right: 5,
+        top: '100px',
+        right: '50px',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
         width: 'auto',
         height: 'auto',
-        backgroundColor: severity === 'success' ? 'green' : 'red',
+        //backgroundColor: severity === 'success' ? 'green' : 'red',
         padding: '10px 20px 10px 20px',
-        color: 'white'
+        color: 'white',
+        borderRadius: '10px'
 
     }
 
@@ -22,7 +24,7 @@ const Notification = ({ message = 'aqui estamos', severity }) => {
     }
 
     return (
-        <div style={notificationStyles}>
+        <div style={notificationStyles} className={severity=== 'success' ? 'Success' : 'Error'}>
             {message}
         </div>
     )

@@ -18,8 +18,8 @@ const ItemListContainer = ({ cat, greeting = "Hola", color = "Red", ...rest }) =
 
 
     useEffect(() => {
-        setNotification('success', 'BIEMVENIDO')
-        
+        setNotification('error', 'BIEMVENIDO')
+
 
 
 
