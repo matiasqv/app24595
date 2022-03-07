@@ -12,7 +12,7 @@ const ItemDetail = ({ productDetail }) => {
     const { productToAdd } = useContext(CartContext)
 
     const setNotification = useContext (NotificationContext)
-    console.log(setNotification)
+
 
     const onAdd = (count) => {
         setCount(count)
@@ -20,7 +20,7 @@ const ItemDetail = ({ productDetail }) => {
 
 
         setNotification ('success',`se agrego al carrito`)
-        console.log(setNotification)
+
     }
 
     return (

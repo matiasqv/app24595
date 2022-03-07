@@ -1,6 +1,6 @@
 
 import './App.css'
-import React, { useEffect } from 'react'
+import React from 'react'
 import NavBar from './components/NavBar/Navbar'
 import ItemListContainer from './components/ItemListContainer/ItemListContainer'
 import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer'

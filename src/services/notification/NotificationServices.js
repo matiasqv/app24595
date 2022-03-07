@@ -1,11 +1,11 @@
-import { createContext, useState , useContext} from 'react'
+import { createContext, useState } from 'react'
 
 
 const Notification = ({ message = 'aqui estamos', severity }) => {
     const notificationStyles = {
         position: 'absolute',
-        top: '20',
-        rigth: '20',
+        top: 100,
+        right: 5,
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
