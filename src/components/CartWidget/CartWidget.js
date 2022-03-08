@@ -6,23 +6,13 @@ import { NavLink } from 'react-router-dom'
 
 const CartWidget = () => {
 
-    const { cart, unidadTotal, precioTotal } = useContext(CartContext)
-
-
-    console.log(cart)
-
-    console.log(cart[0].count)
-    console.log(unidadTotal())
-
-    console.log(precioTotal())
-
-
+    const { cart, unidadTotal } = useContext(CartContext)
 
     return (
         <NavLink className="CartWidget" to={'/cart'}>
             <img src={'../images/carrito.png'} className="Carrito" />
             <p className="Numero">{unidadTotal()}</p>
-        </NavLink> 
+        </NavLink>
     )
 }
 

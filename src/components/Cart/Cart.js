@@ -9,13 +9,6 @@ const Cart = () => {
 
     const { cart, removerItem, clearItems, precioTotal } = useContext(CartContext)
 
-    console.log(precioTotal ())
-
-    const subTotal = (a, b) =>{
-        
-        return (a + b)
-    }
-
 
     return (
         <div className='ItemDetailContainer'>
@@ -31,12 +24,11 @@ const Cart = () => {
                                     <img src={productDetail.imagen} alt={productDetail.marca} className="Item-Img" />
                                     Cantidad: {productDetail.count} {productDetail.marca} Precio: $ {productDetail.precio}
                                     <button className="Button" onClick={() => removerItem(productDetail.id)}>Borrar Item </button>
-                                    subTotal: ({productDetail.count}*{productDetail.precio}) = subTotal({productDetail.count},{productDetail.precio})
                                 </li>
                             </div>
                         ))}
                     </>
-                    <h2>Precio Total: {precioTotal ()}</h2>
+                    <h2>Precio Total: {precioTotal()}</h2>
                 </div>
                 :
                 <>

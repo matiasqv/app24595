@@ -30,11 +30,9 @@ export const CartContextProvider = ({ children }) => {
                 return newProducts
             } else {
                 return product
-                console.log(product)
             }
         })
         setCart(newProducts)
-        console.log(newProducts)
     }
 
     const unidadTotal = () => {
@@ -45,9 +43,6 @@ export const CartContextProvider = ({ children }) => {
         return count
     }
 
-    console.log(unidadTotal ())
-    console.log(cart)
-
     const precioTotal = () => {
         let total = 0
         cart.forEach(prod => {
@@ -55,88 +50,6 @@ export const CartContextProvider = ({ children }) => {
         })
         return total
     }
-    console.log(precioTotal())
-
-/*     const [itemsTotal, setItemsTotal] = useState(0)
-
-    const sCantidad = (productDetail, count) => {
-        const newProd = cart.map((a) => {
-            if (a.length > 0) {
-                const newPro = {
-                    ...a, count
-                }
-                return newProd
-                console.log(a.length)
-            } else {
-                return a
-                console.log(a)
-            }
-        })
-        setItemsTotal(newProd)
-
-    } */
-
-
-
-/*     console.log(itemsTotal) */
-
-/* 
-    const itemsTotal = (cart) => {
-        cart.map((cart) => {
-            if (cart.length > 0) {
-                const element = Number(cart[0].count);
-                const total = total + element;
-                
-                return total
-                console.log(total)
-            }
-            
-        })
-  
-    }
- */
-
-
-
-
-
-    /*     const itemsTotal = (cart) =>{
-    
-        cart.map((cart) => {
-            if (cart.length > 0) {
-                const element = productDetail[i].count
-                const total = total + element
-    
-                return (element)
-    
-                console.log(element)
-            }
-    
-    
-        })}  */
-
-
-
-
-    /*     calcularTotal() {
-            let productosLS;
-            let total = 0, iva = 0, subtotal = 0;
-            productosLS = this.obtenerProductosLocalStorage();
-            for (let i = 0; i < productosLS.length; i++) {
-                let element = Number(productosLS[i].precio * productosLS[i].cantidad);
-                total = total + element;
-            }
-    
-            iva = parseFloat(total * 0.21).toFixed(2);
-            subtotal = parseFloat(total - iva).toFixed(2);
-    
-            document.getElementById('subtotal').innerHTML = subtotal;
-            document.getElementById('iva').innerHTML = iva;
-            document.getElementById('total').value = total.toFixed(2);
-        } */
-
-
-
 
     const clearItems = () => {
         setCart([])
@@ -155,7 +68,7 @@ export const CartContextProvider = ({ children }) => {
             clearItems,
             unidadTotal,
             precioTotal
-        
+
         }}>
             {children}
         </Context.Provider>
