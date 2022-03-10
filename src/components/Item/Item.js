@@ -6,9 +6,9 @@ const Item = ({ productList, ...rest }) => {
     return (
         <article className="Item-Card">
             <h2 className="Item-Name">
-                {productList.marca}
+                {productList.producto}
             </h2>
-            <img src={productList.imagen} alt={productList.marca} className="Item-Img" />
+            <img src={productList.imagen} alt={productList.producto} className="Item-Img" />
             <p className="Item-Precio">
                 Precio: $ {productList.precio}
             </p>

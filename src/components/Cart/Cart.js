@@ -21,8 +21,8 @@ const Cart = () => {
                         {cart.map((productDetail) => (
                             <div className='Item-Card-Carrito' >
                                 <li key={productDetail.id}>
-                                    <img src={productDetail.imagen} alt={productDetail.marca} className="Item-Img" />
-                                    Cantidad: {productDetail.count} {productDetail.marca} Precio: $ {productDetail.precio}
+                                    <img src={productDetail.imagen} alt={productDetail.producto} className="Item-Img" />
+                                    Cantidad: {productDetail.count} {productDetail.producto} Precio: $ {productDetail.precio}
                                     <button className="Button" onClick={() => removerItem(productDetail.id)}>Borrar Item </button>
                                 </li>
                             </div>

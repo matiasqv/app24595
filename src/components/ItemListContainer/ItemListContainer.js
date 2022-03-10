@@ -1,10 +1,11 @@
 import './ItemListContainer.css'
 import ItemList from '../ItemList/ItemList'
 import { useEffect, useState } from 'react'
-import { getProducts } from '../../asyncmock'
 import { getProds } from '../../asyncmock'
 import { useParams } from 'react-router-dom'
 import { useNotificationServices } from '../../services/notification/NotificationServices'
+import { getDocs, collection, query, where } from "firebase/firestore"
+import { firestoreDb } from '../../services/firebase/firebase'
 
 
 const ItemListContainer = ({ cat, greeting = "Hola", color = "Red", ...rest }) => {
@@ -13,8 +14,8 @@ const ItemListContainer = ({ cat, greeting = "Hola", color = "Red", ...rest }) =
     const [prods, setProds] = useState([])
     const { catId } = useParams()
 
-    
-    const setNotification = useNotificationServices ()
+
+    const setNotification = useNotificationServices()
 
 
     useEffect(() => {
@@ -22,30 +23,38 @@ const ItemListContainer = ({ cat, greeting = "Hola", color = "Red", ...rest }) =
 
 
 
+        const productsCollectionRef = collection(firestoreDb, 'products')
 
 
-        getProducts().then((products) => {
+        getDocs(productsCollectionRef).then((querySnapshot) => {
+            const products = querySnapshot.docs.map(doc => {
+                console.log(doc)
+                return { id: doc.id, ...doc.data() }
+            })
+            console.log(products)
             setProducts(products)
-        }).catch(err => {
-            console.log(err)
+        }).catch((error) => {
+            setNotification('error', `Error buscando productos: ${error}`)
         })
 
         return (() => {
             setProducts()
         })
 
-    }, [])
+    }, []) //  }, [catId]) // 
 
 
 
 
     useEffect(() => {
-        getProds(catId).then((prods) => {
+
+        const filterProductsCollectionRef = query(collection(firestoreDb, 'products'), where('categoria', '==', 'categoriasId'))
+        getProds(filterProductsCollectionRef).then((prods) => {
             setProds(prods)
-        }).catch(err => {
-            console.log(err)
+        }).catch((error) => {
+            setNotification('error', `Error buscando productos: ${error}`)
         })
-    }, [catId])
+    }, [])
 
     return (
         <header className="ItemListContainer">
@@ -59,7 +68,7 @@ const ItemListContainer = ({ cat, greeting = "Hola", color = "Red", ...rest }) =
                 <ItemList products={prods} /> :
                 <ItemList products={products} />}
         </header>
-    );
+    )
 }
 
 export default ItemListContainer

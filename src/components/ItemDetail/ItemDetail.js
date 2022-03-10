@@ -27,9 +27,9 @@ const ItemDetail = ({ productDetail }) => {
     return (
         <article className="Item-Card">
             <h2 className="Item-Name">
-                {productDetail.marca}
+                {productDetail.producto}
             </h2>
-            <img src={productDetail.imagen} alt={productDetail.marca} className="Item-Img" />
+            <img src={productDetail.imagen} alt={productDetail.producto} className="Item-Img" />
             <p className="Item-Precio">
                 Precio: $ {productDetail.precio}
             </p>
@@ -38,7 +38,7 @@ const ItemDetail = ({ productDetail }) => {
                     {productDetail.detalles}
                 </p>
                 <p className="List">
-                    {productDetail.producto}
+                    {productDetail.categoria}
                 </p>
                 <p className="List">
                     Stock: {productDetail.stock}
