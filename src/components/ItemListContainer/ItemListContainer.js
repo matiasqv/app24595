@@ -7,7 +7,56 @@ import { getDocs, collection, query, where } from 'firebase/firestore'
 import { firestoreDb } from '../../services/firebase/firebase'
 
 
-const ItemListContainer = ({cat, greeting = "Hola", color = "Red", ...rest }) => {
+
+const ItemListContainer = () => {
+    const [products, setProducts] = useState([])
+    const [loading, setLoading] = useState(true)
+    const { catId } = useParams()
+
+    const setNotification = useNotificationServices()
+
+    useEffect(() => {
+        setLoading(true)
+
+        const collectionRef = catId ?
+            query(collection(firestoreDb, 'products'), where('categoria', '==', catId)) :
+            collection(firestoreDb, 'products')
+
+        getDocs(collectionRef).then(response => {
+            const products = response.docs.map(doc => {
+                return { id: doc.id, ...doc.data() }
+            })
+
+            setProducts(products)
+        }).catch((error) => {
+            setNotification('error', `Error buscando productos: ${error}`)
+        }).finally(() => {
+            setLoading(false)
+        })
+
+        console.log(catId)
+        console.log(products)
+        return (() => {
+            setProducts()
+        })
+    }, [catId]) // eslint-disable-line
+
+    return (
+        <div className="ItemListContainer">
+            {
+                loading ?
+                    <h1>Cargando...</h1> :
+                    products.length ?
+                        <ItemList products={products} /> :
+                        <h1>No se encontraron productos!</h1>
+            }
+        </div>
+    )
+
+}
+
+
+/* const ItemListContainer = ({ cat, greeting = "Hola", color = "Red", ...rest }) => {
 
     const [products, setProducts] = useState([])
     const [prods, setProds] = useState([])
@@ -38,12 +87,15 @@ const ItemListContainer = ({cat, greeting = "Hola", color = "Red", ...rest }) =>
             setProducts()
             console.log(products)
         })
-    }, []) //  }, [catId]) // 
+    }, [])  */
+    
+    
+    //  }, [catId]) // 
 
 
 
 
-    useEffect(() => {
+    /* useEffect(() => {
 
         const prods = query(collection(firestoreDb, 'products'), where('categoria', '==', catId))
         getDocs(prods).then((response) => {
@@ -57,18 +109,18 @@ const ItemListContainer = ({cat, greeting = "Hola", color = "Red", ...rest }) =>
         }).catch(err => {
             console.log(err)
         })
-    }, [catId])
-
-    /* useEffect(() => {
-        getProds(catId).then((prods) => {
-            setProds(prods)
-            console.log(prods)
-        }).catch(err => {
-            console.log(err)
-        })
     }, [catId]) */
 
-    return (
+    /*     useEffect(() => {
+            getProds(catId).then((prods) => {
+                setProds(prods)
+                console.log(prods)
+            }).catch(err => {
+                console.log(err)
+            })
+        }, [catId]) */
+
+/*     return (
         <header className="ItemListContainer">
             <h2>LA TIENDA ONLINE</h2>
             <h3>Lo que buscas y mas...</h3>
@@ -81,6 +133,6 @@ const ItemListContainer = ({cat, greeting = "Hola", color = "Red", ...rest }) =>
                 <ItemList products={products} />}
         </header>
     )
-}
+} */
 
 export default ItemListContainer
