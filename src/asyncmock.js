@@ -1,5 +1,5 @@
 // ARRAY products
-const products = [
+/* const products = [
     { id: 1, categoria: "Bebida", producto: "CocaCola", imagen: "../img/cocacola.jpg", precio: "300", detalles: "CocaCola en lata, 300 cl, con azucar", stock: "35" },
     { id: 2, categoria: "Bebida", producto: "Agua de Mar", imagen: "../img/aguamineral.jpg", precio: "150", detalles: "Importada, 500 cl, sin sodio", stock: "20" },
     { id: 3, categoria: "Bebida", producto: "Jugo Pong", imagen: "../img/jugo.jpg", precio: "200", detalles: "Jugo Natural, 250 cl, sin concervantes", stock: "39" },
@@ -12,9 +12,9 @@ const products = [
     { id: 10, categoria: "Lacteos", producto: "Queso Parmesano", imagen: "../img/parmesan.jpg", precio: "685", detalles: "Premiun, 500 gr, 40 % de materia grasa", stock: "45" },
     { id: 11, categoria: "Lacteos", producto: "Queso Mar del Plata", imagen: "../img/queso.jpg", precio: "895", detalles: "Premiun, 900 gr, 35 % de materia grasa", stock: "25" },
     { id: 12, categoria: "Lacteos", producto: "Leche San Juan", imagen: "../img/leche.jpg", precio: "120", detalles: "Entera, 1 Litro, 3 % de grasas", stock: "10" }
-]
+] */
 
-const categorias = [
+/* const categorias = [
     { id: "Bebida", descripcion: "Bebida" },
     { id: "Panaderia", descripcion: "Panaderia" },
     { id: "Almacen", descripcion: "Almacen" },
@@ -28,33 +28,33 @@ export const getCategorias = () => {
             resolve(categorias)
         }, 1000)
     })
-}
+} */
 
 
-export const getProducts = () => {
+/* export const getProducts = () => {
     return new Promise((resolve) => {
         setTimeout(() => {
             resolve(products)
         }, 1000)
     })
-}
+} */
 
 
-export const getProduct = (id) => {
+/* export const getProduct = (id) => {
     return new Promise((resolve) => {
         const prod = products.find(p => p.id === parseInt(id))
         setTimeout(() => {
             resolve(prod)
         }, 1000)
     })
-}
+} */
 
 
-export const getProds = (catId) => {
+/* export const getProds = (catId) => {
     return new Promise((resolve) => {
         const prods = products.filter(p => p.categoria === catId)
         setTimeout(() => {
             resolve(prods)
         }, 1000)
     })
-}
+} */

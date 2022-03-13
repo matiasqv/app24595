@@ -1,18 +1,20 @@
 import './ItemListContainer.css'
 import ItemList from '../ItemList/ItemList'
 import { useEffect, useState } from 'react'
-import { getProds } from '../../asyncmock'
 import { useParams } from 'react-router-dom'
 import { useNotificationServices } from '../../services/notification/NotificationServices'
-import { getDocs, collection, query, where } from "firebase/firestore"
+import { getDocs, collection, query, where } from 'firebase/firestore'
 import { firestoreDb } from '../../services/firebase/firebase'
 
 
-const ItemListContainer = ({ cat, greeting = "Hola", color = "Red", ...rest }) => {
+const ItemListContainer = ({cat, greeting = "Hola", color = "Red", ...rest }) => {
 
     const [products, setProducts] = useState([])
     const [prods, setProds] = useState([])
     const { catId } = useParams()
+
+    console.log(catId)
+    console.log(prods)
 
 
     const setNotification = useNotificationServices()
@@ -21,26 +23,21 @@ const ItemListContainer = ({ cat, greeting = "Hola", color = "Red", ...rest }) =
     useEffect(() => {
         setNotification('error', 'BIEMVENIDO')
 
+        const products = collection(firestoreDb, 'products')
 
-
-        const productsCollectionRef = collection(firestoreDb, 'products')
-
-
-        getDocs(productsCollectionRef).then((querySnapshot) => {
-            const products = querySnapshot.docs.map(doc => {
-                console.log(doc)
+        getDocs(products).then((response) => {
+            const products = response.docs.map(doc => {
                 return { id: doc.id, ...doc.data() }
             })
             console.log(products)
             setProducts(products)
-        }).catch((error) => {
-            setNotification('error', `Error buscando productos: ${error}`)
+        }).catch(err => {
+            console.log(err)
         })
-
         return (() => {
             setProducts()
+            console.log(products)
         })
-
     }, []) //  }, [catId]) // 
 
 
@@ -48,13 +45,28 @@ const ItemListContainer = ({ cat, greeting = "Hola", color = "Red", ...rest }) =
 
     useEffect(() => {
 
-        const filterProductsCollectionRef = query(collection(firestoreDb, 'products'), where('categoria', '==', 'categoriasId'))
-        getProds(filterProductsCollectionRef).then((prods) => {
+        const prods = query(collection(firestoreDb, 'products'), where('categoria', '==', catId))
+        getDocs(prods).then((response) => {
+            const prods = response.docs.map(p => {
+                return { id: p.id, ...p.data() }
+            })
             setProds(prods)
-        }).catch((error) => {
-            setNotification('error', `Error buscando productos: ${error}`)
+
+            console.log(prods)
+
+        }).catch(err => {
+            console.log(err)
         })
-    }, [])
+    }, [catId])
+
+    /* useEffect(() => {
+        getProds(catId).then((prods) => {
+            setProds(prods)
+            console.log(prods)
+        }).catch(err => {
+            console.log(err)
+        })
+    }, [catId]) */
 
     return (
         <header className="ItemListContainer">

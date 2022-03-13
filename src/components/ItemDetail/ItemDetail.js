@@ -14,11 +14,12 @@ const ItemDetail = ({ productDetail }) => {
 
     const setNotification = useNotificationServices ()
 
+    console.log(productDetail)
+
 
     const onAdd = (count) => {
         setCount(count)
         productToAdd(productDetail, count)
-
 
         setNotification ('success',`se agrego al carrito`)
 

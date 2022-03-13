@@ -2,28 +2,32 @@ import './NavBar.css'
 import CartWidget from '../CartWidget/CartWidget.js'
 import { NavLink } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-import { getCategorias } from '../../asyncmock'
 import { useContext } from 'react'
 import CartContext from '../../context/CartContext'
+import { getDocs, collection } from 'firebase/firestore'
+import { firestoreDb } from '../../services/firebase/firebase'
 
 
 
-const NavBar = ({ catId, title, color, ...rest }) => {
+const NavBar = ({ title, color, ...rest }) => {
     const [categorias, setCategorias] = useState([])
     const { cart } = useContext(CartContext)
 
-
+    console.log(cart)
 
     useEffect(() => {
-        getCategorias().then(categorias => {
+
+        getDocs(collection(firestoreDb, 'categorias')).then(response => {
+            const categorias = response.docs.map(cate => {
+                return { id: cate.id, ...cate.data() }
+                
+            })
+            console.log(categorias)
             setCategorias(categorias)
         })
     }, [])
 
-console.log(catId)
-console.log(categorias)
-
-
+    console.log(categorias)
     return (
         <nav className="NavBar">
             <NavLink className="NavBar-logo" to={'/'}>
