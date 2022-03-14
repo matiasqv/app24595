@@ -75,7 +75,7 @@ const Cart = () => {
                         ))}
                     </>
                     <h2>Precio Total: {precioTotal()}</h2>
-                    <button className="Button" onClick={() => confirmOrder()}>confirmOrder</button>
+                    <button className="Button" onClick={() => confirmOrder()}>Confirmar la Order</button>
                 </div>
                 :
                 <>
