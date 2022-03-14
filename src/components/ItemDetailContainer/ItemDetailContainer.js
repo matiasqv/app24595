@@ -11,8 +11,6 @@ const ItemDetailContainer = () => {
     const [loading, setLoading] = useState(true)
     const { productListId } = useParams()
 
-    console.log(productListId)
-
     useEffect(() => {
 
         const prod = doc(firestoreDb, 'products', productListId)

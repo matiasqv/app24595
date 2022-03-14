@@ -28,8 +28,6 @@ const Cart = () => {
             date: Timestamp.fromDate(new Date())
         }
 
-        console.log(objOrder)
-
         const batch = writeBatch(firestoreDb)
         const outOfStock = []
 
@@ -40,18 +38,14 @@ const Cart = () => {
                     batch.update(doc(firestoreDb, 'products', response.id), {
                         stock: response.data().stock - prod.count
                     })
-                    console.log(prod)
                 } else {
                     outOfStock.push({ id: response.id, ...response.data() })
                     outOfStock.forEach(p => {
-                        console.log(p.producto)
                         setNotification('error', `No hay suficiente stock de: ${p.producto}`)
                     })
                 }
                 if (outOfStock.length === 0) {
                     addDoc(collection(firestoreDb, 'orders'), objOrder).then(({ id }) => {
-                        console.log({ id })
-                        console.log(outOfStock.length)
                         batch.commit().then(() => {
                             setNotification('success', `La orden se genero, su numero de orden es : ${id}`)
                             clearItems()
