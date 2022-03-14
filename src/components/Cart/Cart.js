@@ -3,7 +3,7 @@ import '../CartWidget/CartWidget.css'
 import { useContext } from 'react'
 import CartContext from '../../context/CartContext'
 import { NavLink } from 'react-router-dom'
-import { addDoc, collection, doc, updateDoc, getDocs, writeBatch, getDoc, update, Timestamp } from 'firebase/firestore'
+import { addDoc, collection, doc, writeBatch, getDoc, Timestamp } from 'firebase/firestore'
 import { firestoreDb } from '../../services/firebase/firebase'
 import { useNotificationServices } from '../../services/notification/NotificationServices'
 
@@ -27,13 +27,6 @@ const Cart = () => {
             total: precioTotal(),
             date: Timestamp.fromDate(new Date())
         }
-        /*     addDoc(collection(firestoreDb, 'orders'), objOrder).then ((response) => {
-                console.log(response)
-            }) */
-
-        /* updateDoc(doc(firestoreDb, 'orders', '4Auoahi3nvau4e0ZKCo8'), objOrder).then((response) => {
-            console.log(response)
-        }) */
 
         console.log(objOrder)
 
@@ -42,29 +35,19 @@ const Cart = () => {
 
         objOrder.items.forEach(prod => {
             getDoc(doc(firestoreDb, 'products', prod.id)).then(response => {
-                console.log(response)
-                console.log(response.data())
-                console.log(response.data().id)
-                console.log(response.id)
-                console.log(response.data().stock)
-                console.log(prod.id)
-                console.log(prod)
-                console.log(prod.count)
-                console.log(outOfStock)
-                console.log(outOfStock.length)
-
 
                 if (response.data().stock >= prod.count) {
                     batch.update(doc(firestoreDb, 'products', response.id), {
                         stock: response.data().stock - prod.count
                     })
                     console.log(prod)
-                }
-                else {
+                } else {
                     outOfStock.push({ id: response.id, ...response.data() })
-                    console.log(outOfStock)
+                    outOfStock.forEach(p => {
+                        console.log(p.producto)
+                        setNotification('error', `No hay suficiente stock de: ${p.producto}`)
+                    })
                 }
-
                 if (outOfStock.length === 0) {
                     addDoc(collection(firestoreDb, 'orders'), objOrder).then(({ id }) => {
                         console.log({ id })
@@ -75,15 +58,9 @@ const Cart = () => {
                         })
                     })
                 }
-                
             })
-                    
         })
-
-
     }
-
-
 
     return (
         <div className='ItemDetailContainer'>
