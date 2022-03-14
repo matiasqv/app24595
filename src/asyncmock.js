@@ -2,7 +2,7 @@
 /* const products = [
     { id: 1, categoria: "Bebida", producto: "CocaCola", imagen: "../img/cocacola.jpg", precio: "300", detalles: "CocaCola en lata, 300 cl, con azucar", stock: "35" },
     { id: 2, categoria: "Bebida", producto: "Agua de Mar", imagen: "../img/aguamineral.jpg", precio: "150", detalles: "Importada, 500 cl, sin sodio", stock: "20" },
-    { id: 3, categoria: "Bebida", producto: "Jugo Pong", imagen: "../img/jugo.jpg", precio: "200", detalles: "Jugo Natural, 250 cl, sin concervantes", stock: "39" },
+    { id: 3, categoria: "Bebida", producto: "Jugo Pong", imagen: "../img/jugo.jpg", precio: "200", detalles: "Jugo Natural, 250 cl, sin conservantes", stock: "39" },
     { id: 4, categoria: "Panaderia", producto: "Pan", imagen: "../img/pan.jpg", precio: "350", detalles: "Pan blanco, x kg, sin concervantes", stock: "18" },
     { id: 5, categoria: "Almacen", producto: "Tomate Alcon", imagen: "../img/latatomate.jpg", precio: "576", detalles: "Tomate en lata, 400 g, Cubitado", stock: "12" },
     { id: 6, categoria: "Almacen", producto: "Fideos Don", imagen: "../img/fideos.jpg", precio: "259", detalles: "Fideos Largos, 500 gr, a base de trigo", stock: "11" },

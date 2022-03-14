@@ -19,8 +19,8 @@ const Cart = () => {
                     <button className="Button" onClick={clearItems}>VACIAR CARRITO</button>
                     <>
                         {cart.map((productDetail) => (
-                            <div className='Item-Card-Carrito' >
-                                <li key={productDetail.id}>
+                            <div className='Item-Card-Carrito'  key={productDetail.id}>
+                                <li>
                                     <img src={productDetail.imagen} alt={productDetail.producto} className="Item-Img" />
                                     Cantidad: {productDetail.count} {productDetail.producto} Precio: $ {productDetail.precio}
                                     <button className="Button" onClick={() => removerItem(productDetail.id)}>Borrar Item </button>

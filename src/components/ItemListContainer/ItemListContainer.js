@@ -25,8 +25,9 @@ const ItemListContainer = () => {
         getDocs(collectionRef).then(response => {
             const products = response.docs.map(doc => {
                 return { id: doc.id, ...doc.data() }
+                
             })
-
+            console.log(response)
             setProducts(products)
         }).catch((error) => {
             setNotification('error', `Error buscando productos: ${error}`)
@@ -41,6 +42,9 @@ const ItemListContainer = () => {
         })
     }, [catId]) // eslint-disable-line
 
+    console.log(catId)
+    console.log(products)
+
     return (
         <div className="ItemListContainer">
             {
@@ -52,7 +56,6 @@ const ItemListContainer = () => {
             }
         </div>
     )
-
 }
 
 
@@ -87,15 +90,12 @@ const ItemListContainer = () => {
             setProducts()
             console.log(products)
         })
-    }, [])  */
-    
-    
-    //  }, [catId]) // 
+    }, [])  //  }, [catId]) // 
 
 
 
 
-    /* useEffect(() => {
+    useEffect(() => {
 
         const prods = query(collection(firestoreDb, 'products'), where('categoria', '==', catId))
         getDocs(prods).then((response) => {
@@ -111,7 +111,7 @@ const ItemListContainer = () => {
         })
     }, [catId]) */
 
-    /*     useEffect(() => {
+       /*  useEffect(() => {
             getProds(catId).then((prods) => {
                 setProds(prods)
                 console.log(prods)
@@ -120,7 +120,7 @@ const ItemListContainer = () => {
             })
         }, [catId]) */
 
-/*     return (
+/* return (
         <header className="ItemListContainer">
             <h2>LA TIENDA ONLINE</h2>
             <h3>Lo que buscas y mas...</h3>
