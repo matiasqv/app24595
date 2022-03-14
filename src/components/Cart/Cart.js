@@ -12,10 +12,10 @@ import { useNotificationServices } from '../../services/notification/Notificatio
 const Cart = () => {
 
     const { cart, removerItem, clearItems, precioTotal } = useContext(CartContext)
-
     const setNotification = useNotificationServices()
 
     const confirmOrder = () => {
+
 
         const objOrder = {
             buyer: {
@@ -31,30 +31,43 @@ const Cart = () => {
         const batch = writeBatch(firestoreDb)
         const outOfStock = []
 
+
+        const executeOrder = () => {
+            if (outOfStock.length === 0) {
+                addDoc(collection(firestoreDb, 'orders'), objOrder).then(({ id }) => {
+                    batch.commit().then(() => {
+                        clearItems  ()
+                        setNotification('success', `La orden se genero exitosamente, su numero de orden es: ${id}`)
+                    })
+                }).catch(error => {
+                    setNotification('error', error)
+                })
+            } else {
+                outOfStock.forEach(prod => {
+                    setNotification('error', `El producto ${prod.producto} no tiene stock disponible`)
+                    removerItem(prod.id)
+                })
+            }
+        }
+
+
         objOrder.items.forEach(prod => {
             getDoc(doc(firestoreDb, 'products', prod.id)).then(response => {
-
                 if (response.data().stock >= prod.count) {
                     batch.update(doc(firestoreDb, 'products', response.id), {
                         stock: response.data().stock - prod.count
                     })
                 } else {
                     outOfStock.push({ id: response.id, ...response.data() })
-                    outOfStock.forEach(p => {
-                        setNotification('error', `No hay suficiente stock de: ${p.producto}`)
-                    })
                 }
-                if (outOfStock.length === 0) {
-                    addDoc(collection(firestoreDb, 'orders'), objOrder).then(({ id }) => {
-                        batch.commit().then(() => {
-                            setNotification('success', `La orden se genero, su numero de orden es : ${id}`)
-                            clearItems()
-                        })
-                    })
-                }
+            }).catch((error) => {
+                console.log(error)
+            }).then(() => {
+                executeOrder()
             })
         })
     }
+
 
     return (
         <div className='ItemDetailContainer'>
