@@ -28,20 +28,6 @@ const ItemDetailContainer = () => {
 
     }, [productListId])
 
-
-
-    
-/*     useEffect(() => {
-        getProduct(productListId).then((productDetail) => {
-            setProductDetail(productDetail)
-        }).catch(err => {
-            console.log(err)
-        }).finally(() => {
-            setLoading(false)
-        })
-
-    }, [productListId]) */
-
     return (
         <div className='ItemDetailContainer'>
             <h3>Detalle de Producto</h3>
