@@ -5,7 +5,7 @@ import { createContext, useState, useContext } from 'react'
 const Notification = ({ message = 'aqui estamos', severity }) => {
     const notificationStyles = {
         position: 'absolute',
-        top: '100px',
+        top: '150px',
         right: '50px',
         display: 'flex',
         justifyContent: 'center',
@@ -15,7 +15,8 @@ const Notification = ({ message = 'aqui estamos', severity }) => {
         //backgroundColor: severity === 'success' ? 'green' : 'red',
         padding: '10px 20px 10px 20px',
         color: 'white',
-        borderRadius: '10px'
+        borderRadius: '10px',
+        fontSize: '3em'
 
     }
 
