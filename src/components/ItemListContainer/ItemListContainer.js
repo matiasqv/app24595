@@ -27,23 +27,16 @@ const ItemListContainer = ({ greeting = "Hola", color = "Red", ...rest }) => {
                 return { id: doc.id, ...doc.data() }
 
             })
-            console.log(response)
             setProducts(products)
         }).catch((error) => {
             setNotification('error', `Error buscando productos: ${error}`)
         }).finally(() => {
             setLoading(false)
         })
-
-        console.log(catId)
-        console.log(products)
         return (() => {
             setProducts()
         })
     }, [catId]) // eslint-disable-line
-
-    console.log(catId)
-    console.log(products)
 
     return (
 

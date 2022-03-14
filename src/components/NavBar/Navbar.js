@@ -13,21 +13,16 @@ const NavBar = ({ title, color, ...rest }) => {
     const [categorias, setCategorias] = useState([])
     const { cart } = useContext(CartContext)
 
-    console.log(cart)
-
     useEffect(() => {
 
         getDocs(collection(firestoreDb, 'categorias')).then(response => {
             const categorias = response.docs.map(cate => {
-                return { id: cate.id, ...cate.data() }
-                
+                return { id: cate.id, ...cate.data() }           
             })
-            console.log(categorias)
             setCategorias(categorias)
         })
     }, [])
 
-    console.log(categorias)
     return (
         <nav className="NavBar">
             <NavLink className="NavBar-logo" to={'/'}>
