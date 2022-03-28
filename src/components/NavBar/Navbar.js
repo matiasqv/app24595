@@ -1,11 +1,10 @@
 import './NavBar.css'
 import CartWidget from '../CartWidget/CartWidget.js'
 import { NavLink } from 'react-router-dom'
-import { useEffect, useState } from 'react'
-import { useContext } from 'react'
+import { useEffect, useState, useContext  } from 'react'
 import CartContext from '../../context/CartContext'
-import { getDocs, collection } from 'firebase/firestore'
-import { firestoreDb } from '../../services/firebase/firebase'
+import { getCategorias } from '../../services/firebase/firebase'
+import { useNotificationServices } from '../../services/notification/NotificationServices'
 
 
 
@@ -13,13 +12,13 @@ const NavBar = ({ title, color, ...rest }) => {
     const [categorias, setCategorias] = useState([])
     const { cart } = useContext(CartContext)
 
-    useEffect(() => {
+    const setNotification = useNotificationServices()
 
-        getDocs(collection(firestoreDb, 'categorias')).then(response => {
-            const categorias = response.docs.map(cate => {
-                return { id: cate.id, ...cate.data() }           
-            })
-            setCategorias(categorias)
+    useEffect(() => {
+        getCategorias().then(response => {
+            setCategorias(response)
+        }).catch(error => {
+            setNotification('error', error)
         })
     }, [])
 

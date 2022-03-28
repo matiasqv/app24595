@@ -3,12 +3,10 @@ import ItemList from '../ItemList/ItemList'
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { useNotificationServices } from '../../services/notification/NotificationServices'
-import { getDocs, collection, query, where } from 'firebase/firestore'
-import { firestoreDb } from '../../services/firebase/firebase'
-
-
+import { getProducts } from '../../services/firebase/firebase'
 
 const ItemListContainer = ({ greeting = "Hola", color = "Red", ...rest }) => {
+
     const [products, setProducts] = useState([])
     const [loading, setLoading] = useState(true)
     const { catId } = useParams()
@@ -18,18 +16,10 @@ const ItemListContainer = ({ greeting = "Hola", color = "Red", ...rest }) => {
     useEffect(() => {
         setLoading(true)
 
-        const collectionRef = catId ?
-            query(collection(firestoreDb, 'products'), where('categoria', '==', catId)) :
-            collection(firestoreDb, 'products')
-
-        getDocs(collectionRef).then(response => {
-            const products = response.docs.map(doc => {
-                return { id: doc.id, ...doc.data() }
-
-            })
-            setProducts(products)
+        getProducts(catId).then(response => {
+            setProducts(response)
         }).catch((error) => {
-            setNotification('error', `Error buscando productos: ${error}`)
+            setNotification('error', error)
         }).finally(() => {
             setLoading(false)
         })
