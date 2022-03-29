@@ -2,7 +2,7 @@
 
 Tienda online de alimentos.
 
-![e-miTienda](./public/imges/gif.gif)
+![e-miTienda](public/images/gif.gif)
 
 
 Este proyecto se inició con [Create React App](https://github.com/facebook/create-react-app).
