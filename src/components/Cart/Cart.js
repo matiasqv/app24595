@@ -21,6 +21,8 @@ const Cart = () => {
     })
 
     console.log(contact)
+
+
     const { cart, removerItem, clearItems, precioTotal } = useContext(CartContext)
     const setNotification = useNotificationServices()
 
@@ -35,14 +37,12 @@ const Cart = () => {
                 date: Timestamp.fromDate(new Date())
             }
 
-            console.log(contact)
 
             const batch = writeBatch(firestoreDb)
             const outOfStock = []
 
 
             const executeOrder = () => {
-                console.log(outOfStock.length)
                 if (outOfStock.length === 0) {
                     addDoc(collection(firestoreDb, 'orders'), objOrder).then(({ id }) => {
                         batch.commit().then(() => {
@@ -56,19 +56,15 @@ const Cart = () => {
                 } else {
                     outOfStock.forEach(prod => {
                         setNotification('error', `El producto ${prod.producto} no tiene stock disponible`)
-                        removerItem(prod.id)
-                        console.log(outOfStock.length)
+                        /* removerItem(prod.id) */
                     }).finally(() => {
                         setProcessingOrder(false)
                     })
-                    console.log(outOfStock.length)
                 }
-                console.log(outOfStock.length)
             }
 
 
             objOrder.items.forEach(prod => {
-                console.log(outOfStock.length)
                 getDoc(doc(firestoreDb, 'products', prod.id)).then(response => {
                     if (response.data().stock >= prod.count) {
                         batch.update(doc(firestoreDb, 'products', response.id), {
@@ -77,19 +73,15 @@ const Cart = () => {
                         console.log(outOfStock.length)
                     } else {
                         outOfStock.push({ id: response.id, ...response.data() })
-                        console.log(outOfStock.length)
                     }
                 }).catch((error) => {
                     console.log(error)
                 }).then(() => {
                     executeOrder()
-                    console.log(outOfStock.length)
                 }).finally(() => {
                     setProcessingOrder(false)
                 })
             })
-
-
         } else {
             setNotification('error', 'Debe completar los datos de contacto para generar la orden')
         }
@@ -110,7 +102,7 @@ const Cart = () => {
                     <h4>Comentario: {contact.comment}</h4>
                     <button onClick={() => setContact({ name: '', phone: '', address: '', comment: '' })}
                         className='Button'
-                        style={{ backgroundColor: 'red', fontSize: '20px', margin: '10px'}}>
+                        style={{ backgroundColor: 'red', fontSize: '20px', margin: '10px' }}>
                         Borrar datos de contacto
                     </button>
                 </div>

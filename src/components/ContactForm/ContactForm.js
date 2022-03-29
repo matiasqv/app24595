@@ -7,8 +7,6 @@ const ContactForm = ({ setContact }) => {
     const [address, setAddress] = useState('')
     const [comment, setComment] = useState('')
 
-    console.log(name)
-
     const handleContactForm = (e) => {
         e.preventDefault()
         const objContact = {
@@ -17,8 +15,6 @@ const ContactForm = ({ setContact }) => {
             address,
             comment
         }
-        console.log(objContact)
-        console.log(name)
         setContact(objContact)
 
 
