@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom'
 import { useNotificationServices } from '../../services/notification/NotificationServices'
 import { getProducts } from '../../services/firebase/firebase'
 
-const ItemListContainer = ({ greeting = "Hola", color = "Red", ...rest }) => {
+const ItemListContainer = ({ greeting = "", color = "", ...rest }) => {
 
     const [products, setProducts] = useState([])
     const [loading, setLoading] = useState(true)
@@ -29,7 +29,6 @@ const ItemListContainer = ({ greeting = "Hola", color = "Red", ...rest }) => {
     }, [catId]) // eslint-disable-line
 
     return (
-
         <header className="ItemListContainer">
             <h2>LA TIENDA ONLINE</h2>
             <h3>Lo que buscas y mas...</h3>

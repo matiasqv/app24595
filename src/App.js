@@ -18,7 +18,7 @@ const App = () => {
           <BrowserRouter>
             <NavBar title="e-miTienda" color="red" />
             <Routes>
-              <Route path='/' element={<ItemListContainer greeting="HOLA" color="purple" />} />
+              <Route path='/' element={<ItemListContainer greeting="" color="" />} />
               <Route path='/about' element={<h1>About</h1>} />
               <Route path='/categoria/:catId' element={<ItemListContainer />} />
               <Route path='/detail/:productListId' element={<ItemDetailContainer />} />

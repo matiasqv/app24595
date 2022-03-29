@@ -1,7 +1,7 @@
 import './NavBar.css'
 import CartWidget from '../CartWidget/CartWidget.js'
 import { NavLink } from 'react-router-dom'
-import { useEffect, useState, useContext  } from 'react'
+import { useEffect, useState, useContext } from 'react'
 import CartContext from '../../context/CartContext'
 import { getCategorias } from '../../services/firebase/firebase'
 import { useNotificationServices } from '../../services/notification/NotificationServices'
@@ -37,7 +37,6 @@ const NavBar = ({ title, color, ...rest }) => {
             {cart.length > 0 && <CartWidget />}
         </nav>
     )
-
 }
 
 export default NavBar

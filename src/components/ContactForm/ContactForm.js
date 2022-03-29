@@ -50,7 +50,6 @@ const ContactForm = ({ setContact }) => {
                         pattern="[0-9_-]{1,15}"
                         placeholder='+53-011-5458-5698'
                         value={phone}
-                        /* required */
                         onChange={({ target }) => setPhone(target.value)}
                     />
                 </label>

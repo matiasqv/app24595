@@ -22,7 +22,6 @@ const ItemDetailContainer = () => {
         }).finally(() => {
             setLoading(false)
         })
-
     }, [productListId])
 
     return (

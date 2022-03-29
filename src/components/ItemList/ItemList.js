@@ -5,8 +5,6 @@ import './ItemList.css'
 
 const ItemList = ({ products, ...rest }) => {
 
-
-
     return (
         <div className='Item-list'>
             <ul className="List">
@@ -15,7 +13,6 @@ const ItemList = ({ products, ...rest }) => {
                 )}
             </ul>
         </div>
-
     )
 }
 export default ItemList
