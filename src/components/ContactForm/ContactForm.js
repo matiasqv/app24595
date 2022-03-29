@@ -50,7 +50,7 @@ const ContactForm = ({ setContact }) => {
                         pattern="[0-9_-]{1,15}"
                         placeholder='+53-011-5458-5698'
                         value={phone}
-                        required
+                        /* required */
                         onChange={({ target }) => setPhone(target.value)}
                     />
                 </label>
@@ -70,7 +70,7 @@ const ContactForm = ({ setContact }) => {
                         onChange={({ target }) => setComment(target.value)}
                     />
                 </label>
-                <button className='Button' type='submit'>Confirmar</button>
+                <button className='Button' id='buttonConfirmar' type='submit'>Confirmar</button>
             </form>
         </div>
     )

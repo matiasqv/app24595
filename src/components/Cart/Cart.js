@@ -102,8 +102,6 @@ const Cart = () => {
 
     return (
         <div className='ItemDetailContainer'>
-            <h1>Carrito de Compras</h1>
-
             {(contact.phone !== '' && contact.address !== '' && contact.comment !== '' && contact.name !== '') ?
                 <div>
                     <h4>Nombre: {contact.name}</h4>
@@ -112,14 +110,14 @@ const Cart = () => {
                     <h4>Comentario: {contact.comment}</h4>
                     <button onClick={() => setContact({ name: '', phone: '', address: '', comment: '' })}
                         className='Button'
-                        style={{ backgroundColor: '#db4025' }}>
+                        style={{ backgroundColor: 'red', fontSize: '20px', margin: '10px'}}>
                         Borrar datos de contacto
                     </button>
                 </div>
                 :
                 <ContactForm setContact={setContact} />
             }
-
+            <h2>Carrito de Compras</h2>
             {cart.length > 0 ?
                 <div>
                     <NavLink className="Button" to={'/'}>Agregar Productos</NavLink>
