@@ -31,9 +31,6 @@ const NavBar = ({ title, color, ...rest }) => {
             <div className="Categorias">
                 {categorias.map(cat => <NavLink key={cat.id} cat={cat} to={`/categoria/${cat.id}`} className={({ isActive }) => isActive ? 'ActiveButton' : 'Button'} >{cat.descripcion}</NavLink>)}
             </div>
-{/*             <div className="LoggaIn">
-                <button className="LoggaInButton">Logga In</button>
-            </div> */}
             {cart.length > 0 && <CartWidget />}
         </nav>
     )

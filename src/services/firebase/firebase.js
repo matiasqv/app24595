@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app"
 import { getFirestore } from "firebase/firestore"
-import { getDocs, collection, query, where, getDoc, doc } from 'firebase/firestore'
+import { getDocs, collection, query, where, getDoc, doc , writeBatch} from 'firebase/firestore'
 
 
 const firebaseConfig = {
@@ -19,6 +19,8 @@ const app = initializeApp(firebaseConfig);
 
 
 export const firestoreDb = getFirestore(app)
+
+export const batch = writeBatch(firestoreDb)
 
 export const getProducts = (catId) => {
     return new Promise((resolve, reject) => {
