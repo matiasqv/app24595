@@ -20,7 +20,7 @@ const Cart = () => {
         comment: ''
     })
 
-    console.log(contact)
+
 
 
     const { cart, removerItem, clearItems, precioTotal } = useContext(CartContext)
@@ -69,7 +69,6 @@ const Cart = () => {
                         batch.update(doc(firestoreDb, 'products', response.id), {
                             stock: response.data().stock - prod.count
                         })
-                        console.log(outOfStock.length)
                     } else {
                         outOfStock.push({ id: response.id, ...response.data() })
                     }
