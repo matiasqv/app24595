@@ -3,7 +3,7 @@ import '../CartWidget/CartWidget.css'
 import { useContext, useState } from 'react'
 import CartContext from '../../context/CartContext'
 import { NavLink } from 'react-router-dom'
-import { addDoc, collection, doc, getDoc, Timestamp, batch } from 'firebase/firestore'
+import { addDoc, collection, doc, getDoc, Timestamp,  writeBatch } from 'firebase/firestore'
 import { firestoreDb } from '../../services/firebase/firebase'
 import { useNotificationServices } from '../../services/notification/NotificationServices'
 import ContactForm from '../ContactForm/ContactForm'
@@ -38,6 +38,8 @@ const Cart = () => {
             }
 
             const outOfStock = []
+
+            const batch = writeBatch(firestoreDb)
 
             const executeOrder = () => {
                 if (outOfStock.length === 0) {
